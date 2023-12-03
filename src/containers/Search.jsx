@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import hai from '../../get-location-hai-value.json'
 import locationSlice from '../data/locationSlice';
 import { useEffect, useState } from "react";
+import {getLocation} from '../data/locationThunk'
 
 export function Search() {
   const [value, setValue] = useState("");

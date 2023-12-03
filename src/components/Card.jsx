@@ -1,19 +1,35 @@
-export function Card({ LocalizedName, WeatherText, Value, date, Context }) {
-    
+export function Card({ localizedName, weatherText, value, date, unit }) {
   if (!date) {
     return (
-        <section>
-        <h1>{location.LocalizedName}</h1>
-          <h2>
-            {getCurrentWeatherJson[0].Temperature.Metric.Value} {getCurrentWeatherJson[0].Temperature.Metric.Unit}
-          </h2>
-        </section>
+      <section>
+        <h1>{localizedName}</h1>
+        <h2>
+          {value} {unit}
+        </h2>
+        <h2>{weatherText}</h2>
+      </section>
     );
   }
 
-  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const day = new Date(date).getDay()
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const day = new Date(date).getDay();
 
+  return (
+    <section>
+      <h1>{daysOfWeek[day]}</h1>
+      <h2>
+        {value} {unit}
+      </h2>
+      <h2>{weatherText}</h2>
+    </section>
+  );
 
-  console.log(daysOfWeek[day])
 }

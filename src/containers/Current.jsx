@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+// import { useSelector } from "react-redux/es/hooks/useSelector";
 import getCurrentWeatherJson from '../../get-current-weather.json'
 import currentWeatherSlice from '../data/currentWeatherSlice'
 
-export function Current() {
+export function Current(location) {
     const {changeCurrentWeather} = currentWeatherSlice.actions
-  const { location } = useSelector((state) => state.location);
+  // const { location } = useSelector((state) => state.location);
   const dispatch = useDispatch()
 
 

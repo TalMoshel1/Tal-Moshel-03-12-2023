@@ -1,9 +1,9 @@
 import  {configureStore} from '@reduxjs/toolkit'
-import locationSlice from './locationSlice'
+import locationThunk from '../data/locationThunk'
 
 const store = configureStore({
     reducer: {
-        location: locationSlice.reducer
+        location: locationThunk.reducer
         }
 })
 
