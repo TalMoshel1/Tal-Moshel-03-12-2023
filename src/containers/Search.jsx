@@ -1,20 +1,25 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from "react";
 import hai from '../../get-location-hai-value.json'
 import locationSlice from '../data/locationSlice';
-import { useEffect, useState } from "react";
 import {getLocation} from '../data/locationThunk'
 
 export function Search() {
   const [value, setValue] = useState("");
   const {changeLocation} = locationSlice.actions
   const dispatch = useDispatch()
+  const {location} = useSelector((state)=>state.location)
 
   const getCity = (event) => {
-    if (event.key === 'Enter' ) {
+    if (event.key === 'Enter' || event.keyCode === 13) {
         const city = hai /*hai is the input value I used*/
         dispatch(changeLocation(city))
     }
   };
+
+  useEffect(()=>{
+    console.log('location from Search:', location)
+  },[location])
 
 
 
