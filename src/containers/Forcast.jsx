@@ -1,24 +1,29 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import forcast from "../../five-day-daily-forcast.json";
-import getCurrentWeatherJson from '../../get-current-weather.json'
-import currentWeatherSlice from '../data/currentWeatherSlice'
+// import getCurrentWeatherJson from '../../get-current-weather.json'
+// import currentWeatherSlice from '../data/currentWeatherSlice'
 import { Card } from "../components/Card";
 
 
 
 export function Forecast() {
 
-const {changeCurrentWeather} = currentWeatherSlice.actions
+// const {changeCurrentWeather} = currentWeatherSlice.actions
 
-const dispatch = useDispatch()
+// const dispatch = useDispatch()
 
 const { location } = useSelector((state) => state.location);
+const {current} = useSelector((state)=>state.current)
 
- const unit = getCurrentWeatherJson[0].Temperature.Metric.Unit
- const value = getCurrentWeatherJson[0].Temperature.Metric.Value
- const weatherText = getCurrentWeatherJson[0].WeatherText
+// useEffect(()=>{
+//   dispatch(changeCurrentWeather(location.key))
+// },[])
+
+const value = current.Temperature.Metric.Value
+const unit = current.Temperature.Metric.Unit
+const weatherText = current.WeatherText
 
 
   return (

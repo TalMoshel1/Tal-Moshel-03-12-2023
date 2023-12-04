@@ -1,7 +1,4 @@
-import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import locationAutoCompleteData from "../location-auto-complete-data.json";
-import getCurrentWeather from "../get-current-weather.json";
 import { Header } from "./containers/Header";
 import { Home } from './pages/Home'
 import { Favorites } from "./pages/Favorites";
@@ -9,6 +6,7 @@ import { Favorites } from "./pages/Favorites";
 
 function App() {
 
+  /* Here Thunk redux default location (tel aviv) should be hapenning and setting the forecast and current to tel aviv also*/
 
 
   return (

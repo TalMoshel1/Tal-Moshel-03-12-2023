@@ -1,29 +1,81 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-// import { useSelector } from "react-redux/es/hooks/useSelector";
-import getCurrentWeatherJson from '../../get-current-weather.json'
-import currentWeatherSlice from '../data/currentWeatherSlice'
+import { useSelector } from "react-redux/es/hooks/useSelector";
+// import currentWeatherSlice from "../data/currentWeatherSlice";
+import favoritesSlice from "../data/favouritesSlice";
+import { useLocation } from "react-router-dom";
 
-export function Current(location) {
-    const {changeCurrentWeather} = currentWeatherSlice.actions
-  // const { location } = useSelector((state) => state.location);
-  const dispatch = useDispatch()
+export function Current() {
+  // const { changeCurrentWeather } = currentWeatherSlice.actions;
+  const { location } = useSelector((state) => state.location);
+  const { current } = useSelector((state) => state.current);
+  const { favorites } = useSelector((state) => state.favorites);
+  const { addToFavorites } = favoritesSlice.actions;
 
+  const dispatch = useDispatch();
+
+  const urlLocation = useLocation()
+
+  const Value = current.Temperature.Metric.Value;
+  const Unit = current.Temperature.Metric.Unit;
+  const WeatherText = current.WeatherText;
+  const LocalizedName = location.LocalizedName;
+  const Key = location.Key
+
+  console.log('values from current: ', WeatherText, LocalizedName, Key)
+
+  // const intializeFavoriteData = JSON.parse(localStorage.getItem('favorites')).length > 0  || []
+
+
+  const [isFavorite, setIsFavorite] = useState();
+
+
+
+  const isFavoriteFunc = () => {
+    if (favorites.length === 0) {
+      return false;
+    }
+    const bool = favorites.filter((f)=>{return f.Key === location.Key}).length > 0
+    console.log(location.Key)
+    if (bool) {
+      setIsFavorite(true)
+      return true
+    }
+    return false
+  };
+
+
+
+  useEffect(() => {
+    console.log(location)
+    if (favorites.length) {
+      const result = isFavoriteFunc()
+      console.log(result)
+    } else {
+      console.log('favorits is empty')
+    }
+  }, [favorites, location, urlLocation.pathname]);
 
   useEffect(()=>{
-    console.log(location) /* location.key is what need be searched on Thunk function:
-    `http://dataservice.accuweather.com/currentconditions/v1/${location.key}`*/
-    // dispatch(changeCurrentWeather())
-  },[location])
-
-
+    console.log('current favourites: ',favorites)
+  },[favorites])
 
   return (
-    <section>
-        <h1>{location.LocalizedName}</h1>
-        <h2>{getCurrentWeatherJson[0].WeatherText}</h2>
-        <h2>{getCurrentWeatherJson[0].Temperature.Metric.Value} {getCurrentWeatherJson[0].Temperature.Metric.Unit}</h2>
+    <div>
+      <section>
+        <h1>{LocalizedName}</h1>
+        <h2>{WeatherText}</h2>
+        <h2>
+          {Value} {Unit}
+        </h2>
+      </section>
 
-    </section>
-      )
+      {!isFavorite && (
+        <button onClick={() => dispatch(addToFavorites({Key,LocalizedName, WeatherText, Unit, Value}
+          ))}>
+          Add to Favorites
+        </button>
+      )}
+    </div>
+  );
 }
