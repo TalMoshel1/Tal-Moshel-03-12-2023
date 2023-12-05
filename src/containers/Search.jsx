@@ -5,6 +5,8 @@ import locationSlice from "../data/locationSlice";
 import { getLocation } from "../data/locationThunk";
 import currentWeatherSlice from "../data/currentWeatherSlice";
 import { isNotEnglish } from "../../helpers/isEnglish";
+import '../styles/search.css'
+import styled from "styled-components";
 
 export function Search() {
   const [error, setError] = useState('');
@@ -34,14 +36,22 @@ export function Search() {
   }, [value]);
 
   return (
-    <>
-      <span>Click enter on icon to search</span>
+    <SearchContainer className='searchSection'>
+      <h2>Click enter on icon to search</h2>
       {error && <p>{error}</p>}
+
       <input
         type="text"
         onKeyDown={getCity}
         onChange={(e) => setValue(e.target.value)}
       />
-    </>
+    </SearchContainer>
   );
 }
+
+const SearchContainer = styled.section`
+
+
+
+
+`

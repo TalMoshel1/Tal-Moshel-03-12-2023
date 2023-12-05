@@ -1,0 +1,9 @@
+.current-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.current-container h1 {
+    font-size: 2rem;
+}

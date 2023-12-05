@@ -4,10 +4,10 @@ import { ThemeProvider } from "styled-components";
 import { getLocation } from "./data/locationThunk";
 import { getCurrent } from "./data/currentThunk";
 import { getForecast } from "./data/forecastThunk";
+import { useIsMobile } from "./Context/Context";
 import { Header } from "./containers/Header";
 import { Home } from "./pages/Home";
 import { Favorites } from "./pages/Favorites";
-import ResponsiveComponent from "./containers/mobileNav";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
@@ -17,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
   const location = useSelector((state) => state.location);
   const current = useSelector((state) => state.current);
-  const theme = useSelector((state) => state.theme)
+  const theme = useSelector((state) => state.theme);
 
   // console.log('theme: ', theme)
 
@@ -37,18 +37,17 @@ function App() {
     console.log("fetch theme: ", theme);
   }, [theme]);
 
- 
+  const isMobile = useIsMobile()
 
   return (
     <>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
-          <Header />
+          {!isMobile && <Header />}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/favorites" element={<Favorites />} />
           </Routes>
-          <ResponsiveComponent />
         </ThemeProvider>
       </BrowserRouter>
 

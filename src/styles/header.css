@@ -1,0 +1,43 @@
+header { 
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 10vh;
+}
+
+
+@media (orientation: portrait), (max-width: 700px) {
+    /* header {
+            display:  none
+    } */
+  }
+
+  .site-header {
+    margin-left: 1em
+  
+  }
+
+  .list-conrtainer {
+    margin-right: 1em
+  }
+
+  a {
+    border-bottom: 1px solid transparent;
+    transition: border 1s ease;
+    padding-bottom: 10px;
+    text-decoration: none;
+    margin-right: 1em
+  
+  
+  }
+  
+  
+  a:hover {
+    border-bottom: 3px solid black
+  
+  }
+  
+  .favorites, .home {
+    border-bottom: 3px solid black
+  }
+  

@@ -1,0 +1,11 @@
+.forecast {
+    /* width: 100vw; */
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    text-align:center;
+    margin-right:0;
+    margin-left:0
+
+
+}

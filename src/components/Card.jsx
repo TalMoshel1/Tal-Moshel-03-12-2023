@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import locationSlice from "../data/locationSlice"
+import '../styles/card.css'
 import telAvivLocation from '../../tel-aviv-location.json'
 
 
@@ -50,7 +51,7 @@ export function Card({ localizedName, weatherText, value, date, unit }) {
 
   
   return (
-    <section>
+    <section className={'weather-day'}>
       <h1>{daysOfWeek[day]}</h1>
       <h2>
         {value} {unit}

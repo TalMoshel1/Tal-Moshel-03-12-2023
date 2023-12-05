@@ -3,49 +3,39 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 // import locationSlice from "../data/locationSlice";
 // import currentWeatherSlice from '../data/currentWeatherSlice'
 // import forecastSlice from "../data/forecastSlice";
-
-import {getLocation} from "../data/locationThunk";
-import {getCurrent} from '../data/currentThunk'
-import {getForecast} from "../data/forecastThunk";
-
+import { useIsMobile } from "../Context/Context";
+import { getLocation } from "../data/locationThunk";
+import { getCurrent } from "../data/currentThunk";
+import { getForecast } from "../data/forecastThunk";
+import {MobileNav} from '../containers/MobileNav.jsx'
 
 
 import { Search } from "../containers/Search";
 import { Current } from "../containers/Current";
 import { Forecast } from "../containers/Forcast";
-import { useEffect } from "react";
-
-
+import { AddToFavorites} from '../containers/AddToVavorites.jsx'
+import {Header} from '../containers/Header.jsx'
+import '../styles/home.css'
+import styled from "styled-components";
 
 export function Home() {
-  // const dispatch = useDispatch();
-  // const  location = useSelector((state) => state.location);
-  // const  current = useSelector((state) => state.current);
-  // const  forecast = useSelector((state) => state.forecast);
 
 
-  // useEffect(() => {
-  //   dispatch(getLocation("tel aviv"));
-  // }, []);
-  
-  // useEffect(() => {
-  //   if (location.data.Key) {
-  //     dispatch(getCurrent(location.data.Key));
-  //     dispatch(getForecast(location.data.Key));
+  const isMobile = useIsMobile()
 
-  //   }
-  // }, [location.data]);
-  
-
-
- 
-
+  console.log('is mobile from home: ', isMobile)
 
   return (
-    <main>
-       <Search />
-        <Current/>
-       <Forecast /> 
-    </main>
+    <div className='home'>
+      <div>
+      <Search />
+      <Current />
+      {isMobile && <AddToFavorites />}
+      </div>
+      <Forecast />
+      {isMobile && <Header/>}
+
+    </div>
   );
 }
+

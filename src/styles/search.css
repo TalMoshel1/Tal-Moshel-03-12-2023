@@ -1,0 +1,16 @@
+.searchSection {
+margin-bottom: 1em;
+
+
+}
+
+h2, p, input {
+    /* padding-bottom: 1em; */
+    font-size: 2rem;
+  
+  }
+
+  input {
+    border: 1px solid black;
+    border-radius: 22px;
+  }
