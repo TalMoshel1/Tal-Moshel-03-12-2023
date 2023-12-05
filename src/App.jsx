@@ -1,22 +1,55 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { ThemeProvider } from "styled-components";
+import { getLocation } from "./data/locationThunk";
+import { getCurrent } from "./data/currentThunk";
+import { getForecast } from "./data/forecastThunk";
 import { Header } from "./containers/Header";
-import { Home } from './pages/Home'
+import { Home } from "./pages/Home";
 import { Favorites } from "./pages/Favorites";
-
+import ResponsiveComponent from "./containers/mobileNav";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 function App() {
-
   /* Here Thunk redux default location (tel aviv) should be hapenning and setting the forecast and current to tel aviv also*/
 
+  const dispatch = useDispatch();
+  const location = useSelector((state) => state.location);
+  const current = useSelector((state) => state.current);
+  const theme = useSelector((state) => state.theme)
+
+  // console.log('theme: ', theme)
+
+  useEffect(() => {
+    dispatch(getLocation("tel aviv"));
+  }, []);
+
+  useEffect(() => {
+    if (location.data.Key) {
+      console.log(location.data.Key);
+      // dispatch(getCurrent(location.data.Key));
+      // dispatch(getForecast(location.data.Key));
+    }
+  }, [location.data]);
+
+  useEffect(() => {
+    console.log("fetch theme: ", theme);
+  }, [theme]);
+
+ 
 
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/favorites" element={<Favorites />}/>
-        </Routes>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/favorites" element={<Favorites />} />
+          </Routes>
+          <ResponsiveComponent />
+        </ThemeProvider>
       </BrowserRouter>
 
       {/* <div>
