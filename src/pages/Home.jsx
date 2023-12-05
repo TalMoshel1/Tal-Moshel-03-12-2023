@@ -7,7 +7,6 @@ import { useIsMobile } from "../Context/Context";
 import { getLocation } from "../data/locationThunk";
 import { getCurrent } from "../data/currentThunk";
 import { getForecast } from "../data/forecastThunk";
-import {MobileNav} from '../containers/MobileNav.jsx'
 
 
 import { Search } from "../containers/Search";
