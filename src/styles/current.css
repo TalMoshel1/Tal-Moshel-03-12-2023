@@ -2,8 +2,9 @@
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 1em;
 }
 
 .current-container h1 {
-    font-size: 2rem;
+    font-size: 1rem;
 }

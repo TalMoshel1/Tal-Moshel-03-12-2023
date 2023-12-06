@@ -1,12 +1,14 @@
 .weather-day {
-    width: 30%;
+    width: 100%;
     margin-right: 1.75%; 
      margin-left: 1.75%; 
     border: 1px solid black;
     border-radius: 22px;
     margin-bottom: 2.5%;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .weather-day h1 {
-    font-size:2rem;
+    font-size:1rem;
 }

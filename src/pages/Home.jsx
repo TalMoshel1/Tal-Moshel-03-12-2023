@@ -29,7 +29,7 @@ export function Home() {
       <div>
       <Search />
       <Current />
-      {isMobile && <AddToFavorites />}
+      {/* {isMobile && <AddToFavorites />} */}
       </div>
       <Forecast />
       {isMobile && <Header/>}
