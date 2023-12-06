@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { ThemeProvider } from "styled-components";
 import { getLocation } from "./data/locationThunk";
-import { getCurrent } from "./data/currentThunk";
+import { getCurrent } from './data/currentThunk'
 import { getForecast } from "./data/forecastThunk";
 import { useIsMobile } from "./Context/Context";
 import { Header } from "./containers/Header";
@@ -11,12 +11,13 @@ import { Favorites } from "./pages/Favorites";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
+
 function App() {
   /* Here Thunk redux default location (tel aviv) should be hapenning and setting the forecast and current to tel aviv also*/
 
   const dispatch = useDispatch();
   const location = useSelector((state) => state.location);
-  const current = useSelector((state) => state.current);
+  // const current = useSelector((state) => state.current);
   const theme = useSelector((state) => state.theme);
 
   // console.log('theme: ', theme)
@@ -25,17 +26,14 @@ function App() {
     dispatch(getLocation("tel aviv"));
   }, []);
 
-  useEffect(() => {
-    if (location.data.Key) {
-      console.log(location.data.Key);
-      // dispatch(getCurrent(location.data.Key));
-      // dispatch(getForecast(location.data.Key));
-    }
-  }, [location.data]);
 
   useEffect(() => {
-    console.log("fetch theme: ", theme);
-  }, [theme]);
+      if (location.data?.Key) {
+        dispatch(getCurrent(location.data.Key));
+        dispatch(getForecast())
+      } 
+  }, [location.data]);
+
 
   const isMobile = useIsMobile()
 

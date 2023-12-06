@@ -5,9 +5,6 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 // import forecastSlice from "../data/forecastSlice";
 import { useIsMobile } from "../Context/Context";
 import { getLocation } from "../data/locationThunk";
-import { getCurrent } from "../data/currentThunk";
-import { getForecast } from "../data/forecastThunk";
-
 
 import { Search } from "../containers/Search";
 import { Current } from "../containers/Current";
@@ -21,8 +18,6 @@ export function Home() {
 
 
   const isMobile = useIsMobile()
-
-  console.log('is mobile from home: ', isMobile)
 
   return (
     <div className='home'>

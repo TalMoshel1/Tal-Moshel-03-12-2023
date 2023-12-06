@@ -4,27 +4,42 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import favoritesSlice from "../data/favouritesSlice";
 import { useLocation } from "react-router-dom";
 import { getCurrent } from "../data/currentThunk";
+import { getForecast } from "../data/forecastThunk";
+
+
 import '../styles/current.css'
 
 export function Current() {
   const location = useSelector((state) => state.location);
   const current = useSelector((state) => state.current);
+  const forecast = useSelector((state) => state.forecast.data);
   const { favorites } = useSelector((state) => state.favorites);
   const { addToFavorites } = favoritesSlice.actions;
-  const [currentValues, setCurrentValues] = useState({
-    ...current.data,
-    LocalizedName: location.data.LocalizedName,
-  });
+
+  const [currentValues, setCurrentValues] = useState();
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (location.data) {
-  //     dispatch(getCurrent(location.data.Key));
-  //   }
-  // }, [location.data]);
+  useEffect(() => {
+    console.log('current data: ',current.data)
+    try {
+      if (current.data?.EpochTime) {
+        // console.log('fet forcast works')
+        dispatch(getForecast(location.data.Key));
+      }
+
+    }
+    catch(e) {
+      console.log('should be rendered once')
+
+      console.log('e: ',e, 'current data: ', current.data)
+    }
+  }, [current]);
+
+
 
   useEffect(() => {
-    if (current.data) {
+    if (current.fetchStatus === 'success') {
+      console.log(current.fetchStatus)
       setCurrentValues({
         Key: location.data.Key,
         Unit: current.data.Temperature.Metric.Unit,
@@ -32,8 +47,10 @@ export function Current() {
         WeatherText: current.data.WeatherText,
         LocalizedName: location.data.LocalizedName,
       });
+    } else {
+      console.log(current.data.fetchStatus)
     }
-  }, [current.data]);
+  }, [current]);
 
   const urlLocation = useLocation();
 
@@ -58,14 +75,14 @@ export function Current() {
     return false;
   };
 
-  useEffect(() => {
-    if (favorites.length > 0) {
-      const result = isFavoriteFunc();
-      console.log(result);
-    } else {
-      console.log("favorits is empty");
-    }
-  }, [favorites]);
+  // useEffect(() => {
+  //   if (favorites.length > 0) {
+  //     const result = isFavoriteFunc();
+  //     console.log(result);
+  //   } else {
+  //     console.log("favorits is empty");
+  //   }
+  // }, [favorites]);
 
   // useEffect(() => {
   //   console.log("current favourites: ", favorites);
@@ -73,15 +90,14 @@ export function Current() {
 
   return (
     <div>
-      {currentValues && (
-        <section className='current-container'>
+      {currentValues && <section className='current-container'>
           <h1>{currentValues.LocalizedName}</h1>
-          <h2>{currentValues.WeatherText}Clouds and sun</h2>
+          <h2>{currentValues.WeatherText}</h2>
           <h2>
-            {currentValues.Value}26.2 {currentValues.Unit}C
+            {currentValues.Value} {currentValues.Unit}
           </h2>
         </section>
-      )}
+      }
 
       {!isFavorite && (
         <button onClick={() => dispatch(addToFavorites({ ...currentValues }))}>

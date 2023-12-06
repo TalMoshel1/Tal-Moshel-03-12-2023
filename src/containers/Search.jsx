@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import hai from "../../get-location-hai-value.json";
-import locationSlice from "../data/locationSlice";
+// import locationSlice from "../data/locationSlice";
 import { getLocation } from "../data/locationThunk";
 import currentWeatherSlice from "../data/currentWeatherSlice";
 import { isNotEnglish } from "../../helpers/isEnglish";
