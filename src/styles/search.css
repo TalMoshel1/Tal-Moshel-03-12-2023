@@ -6,13 +6,14 @@ display: flex;
 
 }
 
-h2, p, input {
+h2, p {
     /* padding-bottom: 1em; */
     font-size: 1rem;
   
   }
 
   input {
-    border: 1px solid black;
     border-radius: 22px;
+    padding: '300px'
+
   }

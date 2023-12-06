@@ -28,7 +28,7 @@ export function Search() {
 
   useEffect(() => {
       if (isNotEnglish(value)) {
-        setError("need to display error that you must use only english");
+        setError("english only");
       } else {
         setError('');
       }
@@ -37,10 +37,10 @@ export function Search() {
 
   return (
     <SearchContainer className='searchSection'>
-      <h2>Click enter on icon to search</h2>
       {error && <p>{error}</p>}
 
       <input
+      placeholder={'search'}
         type="text"
         onKeyDown={getCity}
         onChange={(e) => setValue(e.target.value)}
