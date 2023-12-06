@@ -1,12 +1,9 @@
 .searchSection {
-margin-bottom: 1em;
-display: flex;
+    margin-bottom: 1em;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    vertical-align: middle;
-    width: 100%;
-    max-width: 150px;
+
 
 }
 
@@ -18,6 +15,10 @@ h2, p {
 
   input {
     border-radius: 22px;
-    padding: '300px'
+    padding: '300px';
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    max-width: 150px;
 
   }
