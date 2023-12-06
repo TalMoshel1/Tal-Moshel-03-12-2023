@@ -25,6 +25,10 @@
 
 }
 
+.add-to-favorites button {
+    text-align: center;
+}
+
 
 @media (orientation: landscape), (min-width: 700px){
     .current-page-container {

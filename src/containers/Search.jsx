@@ -37,7 +37,7 @@ export function Search() {
 
   return (
     <SearchContainer className='searchSection'>
-      {error && <p>{error}</p>}
+      <p>{error && error}</p>
 
       <input
       placeholder={'search'}
