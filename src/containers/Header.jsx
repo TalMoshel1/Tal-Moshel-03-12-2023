@@ -29,9 +29,9 @@ export function Header() {
     <>
       <HeaderContainer className={isMobile && 'sticky-header'}>
         <h1 className="site-header">Tal Moshel Weather App</h1>
-        <div className="list-conrtainer">
+        <div className="list-container">
           {/* <FavoritesButton/> */}
-          <Link to="/" className={`${location.pathname === "home" && "home"}`}>
+          <Link to="/" className={`${location.pathname === "home"  && "home"}`}>
             HOME
           </Link>
           <Link
@@ -49,6 +49,18 @@ export function Header() {
 
 const HeaderContainer = styled.header`
   background-color: ${(props) => props.theme.colors.header};
+  border: 1px solid ${(props) => props.theme.colors.headerBorderColor};
+  color: ${(props) => props.theme.colors.color};
+  border-radius: 2px;
+
+  a { 
+    color: ${(props) => props.theme.colors.color};
+  }
+
+  a:hover {
+    border-bottom: 3px solid ${(props) => props.theme.colors.color};
+  
+  }
  
 
 `;

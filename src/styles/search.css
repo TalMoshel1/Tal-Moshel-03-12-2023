@@ -20,5 +20,6 @@ h2, p {
     vertical-align: middle;
     width: 100%;
     max-width: 150px;
+    border: 1px solid grey
 
   }

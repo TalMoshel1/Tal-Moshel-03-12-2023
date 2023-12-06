@@ -6,9 +6,7 @@ import favoritesSlice from "../data/favouritesSlice";
 import { useLocation } from "react-router-dom";
 import { getCurrent } from "../data/currentThunk";
 import { getForecast } from "../data/forecastThunk";
-
-
-import '../styles/current.css'
+import "../styles/current.css";
 
 export function Current() {
   const location = useSelector((state) => state.location);
@@ -21,26 +19,22 @@ export function Current() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('current data: ',current.data)
+    console.log("current data: ", current.data);
     try {
       if (current.data?.EpochTime) {
         // console.log('fet forcast works')
         dispatch(getForecast(location.data.Key));
       }
+    } catch (e) {
+      console.log("should be rendered once");
 
-    }
-    catch(e) {
-      console.log('should be rendered once')
-
-      console.log('e: ',e, 'current data: ', current.data)
+      console.log("e: ", e, "current data: ", current.data);
     }
   }, [current]);
 
-
-
   useEffect(() => {
-    if (current.fetchStatus === 'success') {
-      console.log(current.fetchStatus)
+    if (current.fetchStatus === "success") {
+      console.log(current.fetchStatus);
       setCurrentValues({
         Key: location.data.Key,
         Unit: current.data.Temperature.Metric.Unit,
@@ -49,13 +43,11 @@ export function Current() {
         LocalizedName: location.data.LocalizedName,
       });
     } else {
-      console.log(current.data.fetchStatus)
+      console.log(current.data.fetchStatus);
     }
   }, [current]);
 
   // const urlLocation = useLocation();
-
-
 
   const [isFavorite, setIsFavorite] = useState();
 
@@ -89,26 +81,22 @@ export function Current() {
   }, [favorites]);
 
   return (
-    <div>
-      {currentValues && <section className='current-container'>
+    <div className="current-page-container">
+      {currentValues && (
+        <section className="current-container">
           <h1>{currentValues.LocalizedName}</h1>
           <h2>{currentValues.WeatherText}</h2>
           <h2>
             {currentValues.Value} {currentValues.Unit}
           </h2>
         </section>
-      }
-
-      {!isFavorite && (
-        <button onClick={() => dispatch(addToFavorites({ ...currentValues }))}>
-          Add to Favorites
-        </button>
-        
-
       )}
-
-<AiFillHeart/>
-
+      <div className='add-to-favorites'>
+          <button onClick={() => dispatch(addToFavorites({ ...currentValues }))}>
+            Add to Favorites
+          </button>
+          <AiFillHeart />
+      </div>
     </div>
   );
 }

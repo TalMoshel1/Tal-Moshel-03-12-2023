@@ -46,6 +46,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/favorites" element={<Favorites />} />
           </Routes>
+          {isMobile && <Header />}
+
         </ThemeProvider>
       </BrowserRouter>
 

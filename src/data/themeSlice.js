@@ -3,8 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   colors: {
     header: "#ebfbff",
+    headerBorderColor: '#9fecff',
     body: "black",
     footer: "#003333",
+    color: '#00566e'
   },
   mobile: "768px",
   darkMode: false,

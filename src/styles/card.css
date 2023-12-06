@@ -7,8 +7,18 @@
     margin-bottom: 2.5%;
     padding: 0.5em;
     margin-bottom: 0.5em;
+
 }
 
 .weather-day h1 {
     font-size:1rem;
+}
+
+@media (orientation: landscape), (min-width: 700px){
+    .weather-day {
+        min-height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }

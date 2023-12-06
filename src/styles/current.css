@@ -1,10 +1,45 @@
-.current-container {
+.current-card-container {
     display:flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 1em;
+    
 }
 
-.current-container h1 {
+.current-card-container h1 {
     font-size: 1rem;
+}
+
+.add-to-favorites {
+    border: 1px solid black;
+    border-radius: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+}
+
+
+@media (orientation: landscape), (min-width: 700px){
+    .current-page-container {
+        width: 100vw;
+        justify-content: space-around;
+        flex-direction: row-reverse;
+        align-items: center;
+        align-content: center;
+        margin-top: 0em;
+
+
+    }
+
+    .current-page-container button {
+        text-align: center;
+    }
+
+    .add-to-favorites {
+        margin-top: none;
+    }
 }

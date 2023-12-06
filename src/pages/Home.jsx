@@ -27,8 +27,7 @@ export function Home() {
       {/* {isMobile && <AddToFavorites />} */}
       </div>
       <Forecast />
-      {isMobile && <Header/>}
-
+      {/* {isMobile && <Header/>} */}
     </div>
   );
 }

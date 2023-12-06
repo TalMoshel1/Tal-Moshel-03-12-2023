@@ -11,3 +11,12 @@
 
 
 }
+
+
+@media (orientation: landscape), (min-width: 700px){
+    .forecast {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+}
