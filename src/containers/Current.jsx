@@ -94,7 +94,7 @@ export function Current() {
 
       {!isFavorite ? (
         <div
-          className="add-to-favorites"
+          className="button-1"
           onClick={() => dispatch(addToFavorites({ ...currentValues }))}
         >
           <button>Add to Favorites</button>
@@ -102,7 +102,7 @@ export function Current() {
         </div>
       ) : (
         <div
-          className="add-to-favorites"
+          className="button-1"
           onClick={() => dispatch(removeFromFavorites({ Key: currentValues.Key }))}
         >
           <button>Remove from favorites</button>

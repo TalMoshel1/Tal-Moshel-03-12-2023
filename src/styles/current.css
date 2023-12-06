@@ -10,7 +10,7 @@
     font-size: 1rem;
 }
 
-.add-to-favorites {
+.button-1 {
     border: 1px solid black;
     border-radius: 22px;
     display: flex;
@@ -25,7 +25,7 @@
 
 }
 
-.add-to-favorites button {
+.button-1 button {
     text-align: center;
 }
 

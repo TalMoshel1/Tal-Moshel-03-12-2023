@@ -3,8 +3,8 @@ import { dummyForecast } from "./objects/dummy-data";
 import {initializeForecast} from './objects/intializers.js'
 
 
-// export const getForecast = createAsyncThunk(
-//   "fetch-current",
+// export const getForecastNoMetric = createAsyncThunk(
+//   "fetch-forecastNoMetric",
 //   async (cityKey) => {
 //     const response = await fetch(
 //       `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=AdG6XnaXrK4SjNKQ4HoRhvgaGVDbsGpJ`
@@ -12,6 +12,8 @@ import {initializeForecast} from './objects/intializers.js'
 //     return response.json();
 //   }
 // );
+
+// /forecasts/v1/daily/5day/${cityKey}?apikey=eX0BvLwq6EEeVFtvBg7usc23ydzRticl&metric=true
 
 export const getForecast = createAsyncThunk("fetch-forecast", async (cityKey) => {
   const response =Promise.resolve(dummyForecast)
