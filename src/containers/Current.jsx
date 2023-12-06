@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { AiFillHeart } from "react-icons/ai";
 import favoritesSlice from "../data/favouritesSlice";
 import { useLocation } from "react-router-dom";
 import { getCurrent } from "../data/currentThunk";
@@ -52,10 +53,9 @@ export function Current() {
     }
   }, [current]);
 
-  const urlLocation = useLocation();
+  // const urlLocation = useLocation();
 
-  // const intializeFavoriteData =
-  //   JSON.parse(localStorage.getItem("favorites")).length > 0 || [];
+
 
   const [isFavorite, setIsFavorite] = useState();
 
@@ -75,18 +75,18 @@ export function Current() {
     return false;
   };
 
-  // useEffect(() => {
-  //   if (favorites.length > 0) {
-  //     const result = isFavoriteFunc();
-  //     console.log(result);
-  //   } else {
-  //     console.log("favorits is empty");
-  //   }
-  // }, [favorites]);
+  useEffect(() => {
+    if (favorites.length > 0) {
+      const result = isFavoriteFunc();
+      console.log(result);
+    } else {
+      console.log("favorits is empty");
+    }
+  }, [favorites]);
 
-  // useEffect(() => {
-  //   console.log("current favourites: ", favorites);
-  // }, [favorites]);
+  useEffect(() => {
+    console.log("current favourites: ", favorites);
+  }, [favorites]);
 
   return (
     <div>
@@ -103,7 +103,12 @@ export function Current() {
         <button onClick={() => dispatch(addToFavorites({ ...currentValues }))}>
           Add to Favorites
         </button>
+        
+
       )}
+
+<AiFillHeart/>
+
     </div>
   );
 }

@@ -22,8 +22,9 @@ export function Forecast() {
               Icon={day.Day.Icon}
               IconPhrase={day.Day.IconPhrase}
               date={day.Date}
-              value={day.Temperature.Minimum.Value}
+              minValue={day.Temperature.Minimum.Value}
               unit={day.Temperature.Minimum.Unit}
+              maxValue={day.Temperature.Maximum.Value}
             />
           );
         })}

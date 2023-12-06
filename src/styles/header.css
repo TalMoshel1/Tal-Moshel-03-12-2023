@@ -3,8 +3,13 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 height: 10vh;
+width: 100vw
 }
 
+.sticky-header {
+  position:sticky;
+  bottom: 0;
+}
 
 @media (orientation: portrait), (max-width: 700px) {
     /* header {

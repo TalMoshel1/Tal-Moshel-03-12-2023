@@ -21,7 +21,7 @@ export function Home() {
 
   return (
     <div className='home'>
-      <div>
+      <div className='search-current-container'>
       <Search />
       <Current />
       {/* {isMobile && <AddToFavorites />} */}

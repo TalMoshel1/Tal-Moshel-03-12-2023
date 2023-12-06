@@ -5,6 +5,7 @@ export function useIsMobile() {
 
   useEffect(() => {
     const handleResize = () => {
+      console.log(window.innerWidth)
       setIsMobile(window.innerWidth < 700); // Adjust the pixel value as needed
     };
 

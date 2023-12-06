@@ -6,7 +6,7 @@ import telAvivLocation from '../../tel-aviv-location.json'
 
 
 
-export function Card({ Icon, IconPhrase, date, value, unit }) {
+export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit }) {
   
   const dispatch = useDispatch()
 
@@ -54,7 +54,7 @@ export function Card({ Icon, IconPhrase, date, value, unit }) {
       <img src={`https://developer.accuweather.com/sites/default/files/${icon}-s.png`} alt={IconPhrase} />
       <h1>{daysOfWeek[day]}</h1>
       <h2>
-        {value} {unit}
+        {minValue}/{maxValue} {unit}
       </h2>
       <h2>{IconPhrase}</h2>
     </section>
