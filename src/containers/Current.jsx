@@ -13,7 +13,7 @@ export function Current() {
   const current = useSelector((state) => state.current);
   const forecast = useSelector((state) => state.forecast.data);
   const { favorites } = useSelector((state) => state.favorites);
-  const { addToFavorites } = favoritesSlice.actions;
+  const { addToFavorites, removeFromFavorites } = favoritesSlice.actions;
 
   const [currentValues, setCurrentValues] = useState();
   const dispatch = useDispatch();
@@ -22,7 +22,6 @@ export function Current() {
     console.log("current data: ", current.data);
     try {
       if (current.data?.EpochTime) {
-        // console.log('fet forcast works')
         dispatch(getForecast(location.data.Key));
       }
     } catch (e) {
@@ -52,6 +51,7 @@ export function Current() {
   const [isFavorite, setIsFavorite] = useState();
 
   const isFavoriteFunc = () => {
+    console.log('triggered')
     if (favorites.length === 0) {
       return false;
     }
@@ -72,7 +72,7 @@ export function Current() {
       const result = isFavoriteFunc();
       console.log(result);
     } else {
-      console.log("favorits is empty");
+      setIsFavorite(false)
     }
   }, [favorites]);
 
@@ -91,12 +91,24 @@ export function Current() {
           </h2>
         </section>
       )}
-      <div className='add-to-favorites'>
-          <button onClick={() => dispatch(addToFavorites({ ...currentValues }))}>
-            Add to Favorites
-          </button>
-          <AiFillHeart />
-      </div>
+
+      {!isFavorite ? (
+        <div
+          className="add-to-favorites"
+          onClick={() => dispatch(addToFavorites({ ...currentValues }))}
+        >
+          <button>Add to Favorites</button>
+          <AiFillHeart color='grey' border='1px solid black'/>
+        </div>
+      ) : (
+        <div
+          className="add-to-favorites"
+          onClick={() => dispatch(removeFromFavorites({ Key: currentValues.Key }))}
+        >
+          <button>Remove from favorites</button>
+          <AiFillHeart  color='red' border='1px solid black'/>
+        </div>
+      )}
     </div>
   );
 }
