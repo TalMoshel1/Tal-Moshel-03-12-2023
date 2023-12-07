@@ -32,7 +32,7 @@ export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit, localiz
     return (
       <CardTheme  className={'favorite'} >
         {/* <img src="https://developer.accuweather.com/sites/default/files/14-s.png" alt="" /> */}
-        <div onClick={homeOtherCity}>
+        <div onClick={homeOtherCity} className='favorite-city'>
         <h1>{localizedName}</h1>
         <h2>
           {value} {unit}
@@ -40,7 +40,7 @@ export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit, localiz
         <h2>{weatherText}</h2>
         </div>
 
-        <button className='remove-card' onClick={handleClickRemoveFavorite}>remove item</button>
+        <button className='remove-favorite' onClick={handleClickRemoveFavorite}>remove favorite</button>
       </CardTheme>
     );
   }
@@ -75,4 +75,29 @@ export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit, localiz
 const CardTheme = styled.section`
   background-color: ${(props) => props.theme.colors.elemnetBackgroundColor};
 
+  
+  .favorite-city {
+
+    transition: font-size: 0.5s
+  }
+  
+  .favorite-city:hover { 
+    cursor: pointer;
+    font-size: 1.5rem;
+
+  }
+  .remove-favorite {
+    transition: background-color 1s;
+    transition: font-size: 0.5s
+  }
+
+  .remove-favorite:hover {
+    background-color:grey;
+    cursor: pointer;
+    font-size: 1.5rem;
+    
+
+  }
+
 `
+

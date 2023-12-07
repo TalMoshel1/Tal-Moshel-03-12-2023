@@ -64,16 +64,18 @@ border: 1px solid ${(props) => props.theme.colors.BorderColor};
 
   button { 
     color: ${(props) => props.theme.colors.color};
-    transition: color 0.5s;
+    cursor: pointer;
+    transition: font-size 0.5s;
 
 
   }
 
   button:hover {
-    color: ${(props) => props.theme.darkMode === false && 'white' };
-    border: 1px solid ${(props) => props.theme.darkMode === false && 'black' }
-
+    font-size: 1.5rem
   }
+
+
+
   
  
 
