@@ -16,7 +16,7 @@ export function Forecast() {
 
   
 
-  if (forecast.data.DailyForecasts) {
+  if (forecast.data?.DailyForecasts) {
     return (
       <div className='forecast-container'>
         <button className="changeUnitButton">view in {isC ? 'C': 'F'}</button>
