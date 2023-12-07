@@ -10,7 +10,8 @@ import styled from "styled-components";
 
 export function Search() {
   const [error, setError] = useState('');
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState('');
+  const [isEnter, setIsEnter] = useState('')
   // const {changeLocation} = locationSlice.actions
   // const {changeCurrentWeather} = currentWeatherSlice.actions
   const dispatch = useDispatch();
@@ -20,8 +21,9 @@ export function Search() {
     const value = event.target.value;
     if (!isNotEnglish(value)) {
       if (event.key === "Enter" || event.keyCode === 13) {
-        console.log("dispatch search value!");
-         return dispatch(getLocation(value));
+        // console.log("dispatch search value!");
+        //  return dispatch(getLocation(value));
+        setIsEnter(true)
       }
     }
   };
@@ -37,6 +39,7 @@ export function Search() {
 
   return (
     <SearchContainer className='searchSection'>
+      <p>{isEnter&& 'yes!'}</p>
       <p>{error && error}</p>
 
       <input

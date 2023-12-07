@@ -19,14 +19,18 @@ export function Current() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("current data: ", current.data);
+    if (location.data?.Key) {
+      dispatch(getCurrent(location.data.Key));
+      dispatch(getForecast())
+    } 
+}, [location.data]);
+
+  useEffect(() => {
     try {
       if (current.data?.EpochTime) {
         dispatch(getForecast(location.data.Key));
       }
     } catch (e) {
-      console.log("should be rendered once");
-
       console.log("e: ", e, "current data: ", current.data);
     }
   }, [current]);
@@ -77,7 +81,7 @@ export function Current() {
   }, [favorites]);
 
   useEffect(() => {
-    console.log("current favourites: ", favorites);
+    console.log("currentValues.Key: ", currentValues?.Key);
   }, [favorites]);
 
   return (

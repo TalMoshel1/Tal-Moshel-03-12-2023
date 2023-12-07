@@ -5,43 +5,20 @@ import '../styles/favorites.css'
 
 export function Favorites() {
     const favorites = useSelector((state)=>state.favorites.favorites)
-    
-    useEffect(()=>{
-        console.log(favorites)
-    },[favorites])
-    
-    
-    // if (favorites.length > 0) {
-    //     return (
-    //         <section className='favorites-container'>
-                
-    //             {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-    //             {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-    //             {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-    //             {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-    //             {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-    //             {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-    //             {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-    //             {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
 
-    //         </section>
-    //         )
-    // }
 
-    return (     
-                <section className='favorites-container'>
-                
-                {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-                {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-                {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-                {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-                {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-                {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-                {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
-                {favorites.map((f)=> <Card key={f.Key} unit={f.Unit} date={f.Date} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
+    console.log('favorites: ', favorites)
 
-            </section>
-    )
+        return (     
+            <section className='favorites-container'>
+            {favorites.map((f)=> <Card id={f.Key} unit={f.Unit} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
+
+        </section>
+)
+
+    
+
+  
 
 
 }

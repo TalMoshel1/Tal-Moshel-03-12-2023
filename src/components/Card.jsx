@@ -1,39 +1,46 @@
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { getLocation } from "../data/locationThunk";
+import favoritesSlice from '../data/favouritesSlice'
 import '../styles/card.css'
-import telAvivLocation from '../../tel-aviv-location.json'
+import styled from "styled-components";
+import themeSlice from '../data/themeSlice.js'
 
 
 
 
 
-export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit, localizedName, value, weatherText }) {
+export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit, localizedName, value, weatherText, id }) {
   
   const dispatch = useDispatch()
-
   const navigate = useNavigate()
+  const {removeFromFavorites} = favoritesSlice.actions
+  console.log('key from card:', id)
 
-
-  // const {changeLocation} = locationSlice.actions
+  const handleClickRemoveFavorite = () => {
+    dispatch(removeFromFavorites({Key: id}))
+  }
 
 
   const homeOtherCity = () => {
-    // dispatch(changeLocation(telAvivLocation[0]))
-    // dispatch(changeLocation(localizedName))
+    dispatch(getLocation(localizedName))
     navigate('/')
   }
 
 
   if (!date) { /*QUESTION: 'the the first note of each prop isn't always Capital? Answer: Because Date word is saved to be a class'*/
     return (
-      <section onClick={homeOtherCity} className={'weather-day favorite'} >
+      <section  className={'favorite'} >
         {/* <img src="https://developer.accuweather.com/sites/default/files/14-s.png" alt="" /> */}
+        <div onClick={homeOtherCity}>
         <h1>{localizedName}</h1>
         <h2>
           {value} {unit}
         </h2>
         <h2>{weatherText}</h2>
-        <div className='remove-card'></div>
+        </div>
+
+        <button className='remove-card' onClick={handleClickRemoveFavorite}>remove item</button>
       </section>
     );
   }
@@ -63,3 +70,8 @@ export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit, localiz
   );
 
 }
+
+
+const FavoriteCard = styled.section`
+
+`

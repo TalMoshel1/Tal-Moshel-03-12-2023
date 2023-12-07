@@ -6,6 +6,7 @@
     width: 100%;
     flex-wrap: wrap;
     align-content: center;
+    gap: 1em;
 }
 
 .favorite {
@@ -13,4 +14,5 @@
     width: 10vw;
     min-width: 100px;
     text-align: center;
+    height: 100px;
 }

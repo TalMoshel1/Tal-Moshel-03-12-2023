@@ -27,12 +27,13 @@ function App() {
   }, []);
 
 
-  useEffect(() => {
-      if (location.data?.Key) {
-        dispatch(getCurrent(location.data.Key));
-        dispatch(getForecast())
-      } 
-  }, [location.data]);
+  // useEffect(() => {
+  //     if (location.data?.Key) {
+  //       console.log('works!!!')
+  //       dispatch(getCurrent(location.data.Key));
+  //       dispatch(getForecast())
+  //     } 
+  // }, [location.data]);
 
 
   const isMobile = useIsMobile()

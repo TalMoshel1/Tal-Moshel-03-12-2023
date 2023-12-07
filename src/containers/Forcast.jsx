@@ -11,6 +11,7 @@ import '../styles/changeUnitButton.css'
 
 export function Forecast() {
   const forecast = useSelector((state) => state.forecast);
+  const location = useSelector((state) => state.location)
   const [isC, setIsC] = useState(false)
 
   
@@ -23,6 +24,7 @@ export function Forecast() {
           {forecast.data.DailyForecasts.map((day) => {
             return (
               <Card
+                
                 Icon={day.Day.Icon}
                 IconPhrase={day.Day.IconPhrase}
                 date={day.Date}
