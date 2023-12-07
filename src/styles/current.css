@@ -54,6 +54,11 @@
 
     }
 
+    .button-1 {
+        margin-top: 0;
+
+    }
+
     .current-page-container button {
         text-align: center;
     }
