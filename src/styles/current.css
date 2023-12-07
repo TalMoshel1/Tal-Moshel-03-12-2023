@@ -10,6 +10,12 @@
     align-items: center;
     margin-bottom: 1em;
     
+
+}
+
+.current-container {
+    border-radius: 22px;
+    padding:1em;
 }
 
 .current-card-container h1 {
@@ -27,7 +33,7 @@
     margin-top: 1em;
     /* margin-bottom: 1em; */
     width: 5rem;
-    height: 7rem;
+    /* height: 7rem; */
 
 }
 
