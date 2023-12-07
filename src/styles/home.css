@@ -19,6 +19,8 @@
 
 
 
+
+
 @media (orientation: landscape), (min-width: 700px){
     div > div{
         display: flex;

@@ -54,7 +54,9 @@ export function Search() {
 
 const SearchContainer = styled.section`
 
-
+input {
+  background-color: ${(props) => props.theme.colors.elemnetBackgroundColor};
+}
 
 
 `

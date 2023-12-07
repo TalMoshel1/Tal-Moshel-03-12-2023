@@ -30,7 +30,7 @@ export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit, localiz
 
   if (!date) { /*QUESTION: 'the the first note of each prop isn't always Capital? Answer: Because Date word is saved to be a class'*/
     return (
-      <section  className={'favorite'} >
+      <CardTheme  className={'favorite'} >
         {/* <img src="https://developer.accuweather.com/sites/default/files/14-s.png" alt="" /> */}
         <div onClick={homeOtherCity}>
         <h1>{localizedName}</h1>
@@ -41,7 +41,7 @@ export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit, localiz
         </div>
 
         <button className='remove-card' onClick={handleClickRemoveFavorite}>remove item</button>
-      </section>
+      </CardTheme>
     );
   }
 
@@ -59,19 +59,20 @@ export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit, localiz
   const icon = Icon > 10 ? Icon : `0${Icon}`
   
   return (
-    <section className={'weather-day'}>
+    <CardTheme className={'weather-day'}>
       <img src={`https://developer.accuweather.com/sites/default/files/${icon}-s.png`} alt={IconPhrase} />
       <h1>{daysOfWeek[day]}</h1>
       <h2>
         {minValue}/{maxValue} {unit}
       </h2>
       <h2>{IconPhrase}</h2>
-    </section>
+    </CardTheme>
   );
 
 }
 
 
-const FavoriteCard = styled.section`
+const CardTheme = styled.section`
+  background-color: ${(props) => props.theme.colors.elemnetBackgroundColor};
 
 `

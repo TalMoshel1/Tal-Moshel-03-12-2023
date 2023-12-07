@@ -13,14 +13,15 @@ import { AddToFavorites} from '../containers/AddToVavorites.jsx'
 import {Header} from '../containers/Header.jsx'
 import '../styles/home.css'
 import styled from "styled-components";
+import themeSlice from "../data/themeSlice.js";
 
 export function Home() {
 
-
   const isMobile = useIsMobile()
+  const theme = useSelector((state) => state.theme);
 
   return (
-    <div className='home'>
+    <HomeStyle className='home'>
       <div className='search-current-container'>
       <Search />
       <Current />
@@ -28,7 +29,13 @@ export function Home() {
       </div>
       <Forecast />
       {/* {isMobile && <Header/>} */}
-    </div>
+    </HomeStyle>
   );
 }
+
+const HomeStyle = styled.div`
+
+    background-color: ${(props) => props.theme.colors.pageBackgroundColor};
+  
+`
 

@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import { getCurrent } from "../data/currentThunk";
 import { getForecast } from "../data/forecastThunk";
 import "../styles/current.css";
+import styled from "styled-components";
 
 export function Current() {
   const location = useSelector((state) => state.location);
@@ -87,32 +88,43 @@ export function Current() {
   return (
     <div className="current-page-container">
       {currentValues && (
-        <section className="current-container">
+        <CurrentContainer className="current-container">
           <h1>{currentValues.LocalizedName}</h1>
           <h2>{currentValues.WeatherText}</h2>
           <h2>
             {currentValues.Value} {currentValues.Unit}
           </h2>
-        </section>
+        </CurrentContainer>
       )}
 
       {!isFavorite ? (
-        <div
+        <IsFavoriteContainer
           className="button-1"
           onClick={() => dispatch(addToFavorites({ ...currentValues }))}
         >
           <button>Add to Favorites</button>
           <AiFillHeart color='grey' border='1px solid black'/>
-        </div>
+        </IsFavoriteContainer>
       ) : (
-        <div
+        <IsFavoriteContainer
           className="button-1"
           onClick={() => dispatch(removeFromFavorites({ Key: currentValues.Key }))}
         >
           <button>Remove from favorites</button>
           <AiFillHeart  color='red' border='1px solid black'/>
-        </div>
+        </IsFavoriteContainer>
       )}
     </div>
   );
 }
+
+const CurrentContainer = styled.div`
+
+background-color: ${(props) => props.theme.colors.elemnetBackgroundColor};
+`
+
+const IsFavoriteContainer = styled.div`
+background-color: ${(props) => props.theme.colors.elemnetBackgroundColor};
+
+
+`

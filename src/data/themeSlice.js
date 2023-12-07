@@ -4,6 +4,8 @@ const initialState = {
   colors: {
     body: '#ebfbff',
     backgroundColor: "#d2f6ff",
+    pageBackgroundColor: '#d2f6ff',
+    elemnetBackgroundColor:  'rgba(255, 255, 255, 0.3)',
     BorderColor: '#003c2a',
     color: '#003c2a',
     footer: "#003333",

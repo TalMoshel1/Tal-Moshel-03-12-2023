@@ -48,8 +48,8 @@ export function Header() {
 }
 
 const HeaderContainer = styled.header`
-  background-color: ${(props) => props.theme.colors.backgroundColor};
-  border: 1px solid ${(props) => props.theme.colors.BorderColor};
+background-color: ${(props) => props.theme.colors.elemnetBackgroundColor};
+border: 1px solid ${(props) => props.theme.colors.BorderColor};
   color: ${(props) => props.theme.colors.color};
   border-radius: 2px;
 
