@@ -17,7 +17,7 @@ export function Forecast() {
 
   if (forecast.data.DailyForecasts) {
     return (
-      <>
+      <div className='forecast-container'>
         <button className="changeUnitButton">view in {isC ? 'C': 'F'}</button>
         <section className="forecast">
           {forecast.data.DailyForecasts.map((day) => {
@@ -33,7 +33,7 @@ export function Forecast() {
             );
           })}
         </section>
-      </>
+      </div>
     );
   }
   return <section className="forecast"></section>;

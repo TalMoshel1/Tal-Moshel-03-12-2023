@@ -9,7 +9,7 @@ margin-bottom: 0;
 
 .sticky-header {
   position:sticky;
-  bottom: 0
+  bottom: 0;
 }
 
 a, .list-container { 
@@ -40,6 +40,11 @@ a {
   .site-header {
     margin-left: 3em;
   }
+
+  .sticky-header {
+    position:fixed;
+    top: 0
+}
 
 
 

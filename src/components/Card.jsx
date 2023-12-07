@@ -6,7 +6,8 @@ import telAvivLocation from '../../tel-aviv-location.json'
 
 
 
-export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit }) {
+
+export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit, localizedName, value, weatherText }) {
   
   const dispatch = useDispatch()
 
@@ -25,13 +26,14 @@ export function Card({ Icon, IconPhrase, date, minValue, maxValue, unit }) {
 
   if (!date) { /*QUESTION: 'the the first note of each prop isn't always Capital? Answer: Because Date word is saved to be a class'*/
     return (
-      <section onClick={homeOtherCity}>
-        {/* <img src="https://developer.accuweather.com/sites/default/files/14-s.png" alt="" />
+      <section onClick={homeOtherCity} className={'weather-day favorite'} >
+        {/* <img src="https://developer.accuweather.com/sites/default/files/14-s.png" alt="" /> */}
         <h1>{localizedName}</h1>
         <h2>
           {value} {unit}
         </h2>
-        <h2>{weatherText}</h2> */}
+        <h2>{weatherText}</h2>
+        <div className='remove-card'></div>
       </section>
     );
   }

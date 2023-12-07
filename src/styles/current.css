@@ -1,3 +1,9 @@
+.current-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .current-card-container {
     display:flex;
     flex-direction: column;

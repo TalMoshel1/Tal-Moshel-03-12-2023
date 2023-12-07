@@ -1,0 +1,16 @@
+.favorites-container {
+    justify-content: center;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.favorite {
+
+    width: 10vw;
+    min-width: 100px;
+    text-align: center;
+}

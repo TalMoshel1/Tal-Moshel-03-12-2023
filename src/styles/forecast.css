@@ -13,10 +13,22 @@
 }
 
 
+.forecast-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 @media (orientation: landscape), (min-width: 700px){
     .forecast {
         flex-direction: row;
         align-items: center;
         flex-wrap: nowrap;
+    }
+
+    .forecast-container {
+        display: flex;
+        align-items: center;
     }
 }
