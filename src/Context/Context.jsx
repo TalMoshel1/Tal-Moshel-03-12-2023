@@ -20,9 +20,5 @@ export function useIsMobile() {
     };
   }, []);
 
-  useEffect(()=>{
-    console.log(isMobile)
-  },[isMobile])
-
   return isMobile;
 }
