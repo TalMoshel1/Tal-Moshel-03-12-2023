@@ -36,11 +36,11 @@
 
 @media (orientation: landscape), (min-width: 700px){
     .weather-day {
-        min-height: 30vh;
+        height: 40vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 15%;
+        width: 20%;
 
     }
 }
