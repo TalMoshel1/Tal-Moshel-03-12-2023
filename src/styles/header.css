@@ -26,10 +26,13 @@ a {
   transition: border 1s ease;
   padding-bottom: 10px;
   text-decoration: none;
+}
+
+button { 
+  font-size: 1rem;
 
 
 }
-
 @media (orientation: landscape), (min-width: 700px) {
 
   a, .list-container { 

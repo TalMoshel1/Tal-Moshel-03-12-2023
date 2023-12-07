@@ -40,7 +40,7 @@ export function Header() {
           >
             FAVORITES
           </Link>
-          <button onClick={handleThemeChange}>change themes!</button>
+          <button onClick={handleThemeChange}>CHANGE COLORS!</button>
         </div>
       </HeaderContainer>
     </>
@@ -60,6 +60,11 @@ const HeaderContainer = styled.header`
   a:hover {
     border-bottom: 3px solid ${(props) => props.theme.colors.color};
   
+  }
+
+  button { 
+    color: ${(props) => props.theme.colors.color};
+
   }
  
 
