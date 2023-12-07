@@ -82,6 +82,15 @@ export function Current() {
     console.log("current favourites: ", favorites);
   }, [favorites]);
 
+  if (current.fetchStatus === "error") {
+    return <p>Error getting the data</p>
+  }
+
+  if (current.fetchStatus === "loading") {
+    return <p>Spinner</p>
+
+  }
+
   return (
     <div className="current-page-container">
       {currentValues && (

@@ -44,6 +44,15 @@ function App() {
 
   const isMobile = useIsMobile()
 
+  if (location.fetchStatus === "error") {
+    return <p>Error getting the data</p>
+  }
+
+  if (location.fetchStatus === "loading") {
+    return <p>Spinner</p>
+
+  }
+
   return (
     <>
       <BrowserRouter>

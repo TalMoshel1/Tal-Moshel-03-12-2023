@@ -6,6 +6,8 @@ import styled from "styled-components"
 
 export function Favorites() {
     const favorites = useSelector((state)=>state.favorites.favorites)
+    const current = useSelector((state) => state.current);
+    const location = useSelector((state) => state.location);
     const theme = useSelector((state) => state.theme);
 
 

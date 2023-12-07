@@ -14,7 +14,14 @@ export function Forecast() {
   const location = useSelector((state) => state.location)
   const [isC, setIsC] = useState(false)
 
-  
+  if (forecast.fetchStatus === "error") {
+    return <p>Error getting the data</p>
+  }
+
+  if (forecast.fetchStatus === "loading") {
+    return <p>Spinner</p>
+
+  }
 
   if (forecast.data?.DailyForecasts) {
     return (
