@@ -10,9 +10,10 @@
 }
 
 .favorite {
-
-    width: 15vw;
+    height: 100px;
     min-width: 100px;
     text-align: center;
-    height: 12vh;
+    padding-top: 1em;
+    /* padding-left: 1em;
+    padding-right: 1em; */
 }

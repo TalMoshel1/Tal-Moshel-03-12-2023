@@ -77,8 +77,10 @@ const CardTheme = styled.section`
 
   
   .favorite-city {
-
+    display: flex;
+    flex-direction: column;
     transition: font-size: 0.5s
+    width:180px
   }
   
   .favorite-city:hover { 

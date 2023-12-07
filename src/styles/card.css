@@ -3,7 +3,7 @@
     padding: 1em;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
     /* margin-right: 1.75%; */
     border: 1px solid black;
     border-radius: 22px;
@@ -27,6 +27,7 @@
     border: 1px solid black;
     border-radius: 22px;
     height: 20vh;
+    width:180px;
 }
 
 .remove-favorite {
@@ -41,7 +42,7 @@
 
 @media (orientation: landscape), (min-width: 700px){
     .weather-day {
-        min-height: 50vh;
+        /* min-height: 50vh; */
         display: flex;
         flex-direction: column;
         justify-content: center;

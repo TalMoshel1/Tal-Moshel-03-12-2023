@@ -19,13 +19,19 @@ const themeSlice = createSlice({
   initialState,
   reducers: {
     setDarkTheme(state) {
-      state.colors.header = "#324B50";
-      state.colors.body = "#445155";
+      state.color.backgroundColor = '#000000'
+      state.colors.headerBackground = "#1E1E1E";
+      state.colors.itemBackground = "#1E1E1E";
+      state.colors.lettersSmall = '#A2A2A2';
+      state.colors.lettersBig = '#E1E1E1'
       state.darkMode = true;
     },
     setDefaultTheme(state) {
-      state.colors.header = "#ebfbff";
-      state.colors.body = "#fff";
+      state.color.backgroundColor = '#FFFFFF'
+      state.colors.headerBackground = "#6200EE";
+      state.colors.itemBackground = "#FFFFFF";
+      state.colors.lettersSmall = '#787878';
+      state.colors.lettersBig = '#212121'
       state.darkMode = false;
     },
   },

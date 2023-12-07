@@ -3,7 +3,7 @@ import {initializedCurrent} from './objects/intializers.js'
 import { dummyCurrent } from "./objects/dummy-data.js";
 export const getCurrent = createAsyncThunk("fetch-current", async (cityKey) => {
   const response = await fetch(
-    `https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=eX0BvLwq6EEeVFtvBg7usc23ydzRticl`
+    `https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=evfOeo7HTiSJxNySGtxtSOiQvtHlNXqi`
   );
   return response.json();
 });
