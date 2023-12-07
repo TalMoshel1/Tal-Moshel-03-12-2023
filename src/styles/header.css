@@ -12,10 +12,6 @@ margin-bottom: 0;
   bottom: 0;
 }
 
-a, .list-container { 
-  margin-right: 1em
-
-}
 
 .site-header {
   margin-left: 1em;
@@ -33,12 +29,31 @@ button {
 
 
 }
+
+.spread-header-items-evenly {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+
+}
+
+a {
+  padding-bottom: 0;
+}
+
+
 @media (orientation: landscape), (min-width: 700px) {
 
   a, .list-container { 
     margin-right: 3em
   
   }
+
+  /* a, .list-container { 
+    margin-right: 1em
+  
+  } */
   
   .site-header {
     margin-left: 3em;
@@ -48,6 +63,8 @@ button {
     position:fixed;
     top: 0
 }
+
+
 
 
 

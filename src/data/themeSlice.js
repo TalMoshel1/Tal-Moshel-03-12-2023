@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   colors: {
-    header: "#ebfbff",
-    headerBorderColor: '#9fecff',
-    body: "black",
+    body: '#ebfbff',
+    backgroundColor: "#d2f6ff",
+    BorderColor: '#003c2a',
+    color: '#003c2a',
     footer: "#003333",
-    color: '#00566e'
   },
   mobile: "768px",
   darkMode: false,

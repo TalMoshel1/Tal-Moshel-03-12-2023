@@ -8,8 +8,9 @@
     text-align: center;
     margin-right: 0;
     margin-left: 0;
-
-
+    width: 50%;
+    gap: 1em;
+    min-width: 300px;
 }
 
 
@@ -17,6 +18,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100vw;
+    margin-bottom: 1em;
 }
 
 
@@ -25,6 +28,9 @@
         flex-direction: row;
         align-items: center;
         flex-wrap: nowrap;
+        width: 100%;
+        justify-content: center;
+
     }
 
     .forecast-container {

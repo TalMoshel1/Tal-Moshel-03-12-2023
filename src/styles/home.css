@@ -3,7 +3,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 90vh;
+    /* min-height: 90vh; */
+    overflow-y: auto;
 }
 
 .search-current-container{

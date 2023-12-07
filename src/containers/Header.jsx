@@ -28,8 +28,8 @@ export function Header() {
   return (
     <>
       <HeaderContainer className={isMobile && 'sticky-header'}>
-        <h1 className="site-header">Tal Moshel Weather App</h1>
-        <div className="list-container">
+        {!isMobile && <h1 className="site-header">Tal Moshel Weather App</h1>}
+        <div className={`list-container ${isMobile && 'spread-header-items-evenly'}`}>
           {/* <FavoritesButton/> */}
           <Link to="/" className={`${location.pathname === "home"  && "home"}`}>
             HOME
@@ -48,8 +48,8 @@ export function Header() {
 }
 
 const HeaderContainer = styled.header`
-  background-color: ${(props) => props.theme.colors.header};
-  border: 1px solid ${(props) => props.theme.colors.headerBorderColor};
+  background-color: ${(props) => props.theme.colors.backgroundColor};
+  border: 1px solid ${(props) => props.theme.colors.BorderColor};
   color: ${(props) => props.theme.colors.color};
   border-radius: 2px;
 
@@ -64,8 +64,17 @@ const HeaderContainer = styled.header`
 
   button { 
     color: ${(props) => props.theme.colors.color};
+    transition: color 0.5s;
+
 
   }
+
+  button:hover {
+    color: ${(props) => props.theme.darkMode === false && 'white' };
+    border: 1px solid ${(props) => props.theme.darkMode === false && 'black' }
+
+  }
+  
  
 
 `;
