@@ -1,7 +1,7 @@
 .favorites-container {
+    display: flex;
     justify-content: center;
     height: 90vh;
-    display: flex;
     align-items: center;
     width: 100%;
     flex-wrap: wrap;

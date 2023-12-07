@@ -21,9 +21,8 @@ export function Search() {
     const value = event.target.value;
     if (!isNotEnglish(value)) {
       if (event.key === "Enter" || event.keyCode === 13) {
-        // console.log("dispatch search value!");
-        //  return dispatch(getLocation(value));
-        setIsEnter(true)
+        console.log("dispatch search value!");
+         return dispatch(getLocation(value));
       }
     }
   };

@@ -1,17 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {initializedCurrent} from './objects/intializers.js'
 import { dummyCurrent } from "./objects/dummy-data.js";
-// export const getCurrent = createAsyncThunk("fetch-current", async (cityKey) => {
-//   const response = await fetch(
-//     `https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=AdG6XnaXrK4SjNKQ4HoRhvgaGVDbsGpJ`
-//   );
-//   return response.json();
-// });
-
 export const getCurrent = createAsyncThunk("fetch-current", async (cityKey) => {
-  const response = Promise.resolve(dummyCurrent)
-  return response
+  const response = await fetch(
+    `https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=eX0BvLwq6EEeVFtvBg7usc23ydzRticl`
+  );
+  return response.json();
 });
+
+// export const getCurrent = createAsyncThunk("fetch-current", async (cityKey) => {
+//   const response = Promise.resolve(dummyCurrent)
+//   return response
+// });
 
 const currentSlice = createSlice({
   name: "current",
@@ -23,7 +23,7 @@ const currentSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getCurrent.fulfilled, (state, action) => {
-        state.data = action.payload
+        state.data = action.payload[0]
         state.fetchStatus = "success";
       })
       .addCase(getCurrent.pending, (state) => {

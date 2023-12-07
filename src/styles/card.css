@@ -1,6 +1,6 @@
 .weather-day {
     margin: 0px;
-    padding: 0px;
+    padding: 1em;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -26,6 +26,7 @@
     align-items: center;
     border: 1px solid black;
     border-radius: 22px;
+    height: 20vh;
 }
 
 .remove-favorite {

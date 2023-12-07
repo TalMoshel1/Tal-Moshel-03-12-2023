@@ -35,6 +35,12 @@ function App() {
   //     } 
   // }, [location.data]);
 
+  useEffect(() => {
+    if (location.data?.Key) {
+      dispatch(getCurrent(location.data.Key));
+    } 
+}, [location.data]);
+
 
   const isMobile = useIsMobile()
 
