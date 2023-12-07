@@ -19,19 +19,19 @@ export function Current() {
   const [currentValues, setCurrentValues] = useState();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log("current data: ", current.data);
-    try {
-      if (current.data?.EpochTime) {
-        console.log('location.data.Key :', location.data.Key)
-        dispatch(getForecast({ isMetric: true, cityKey: 215854 }));
-      }
-    } catch (e) {
-      console.log("should be rendered once");
+  // useEffect(() => {
+  //   console.log("current data: ", current.data);
+  //   try {
+  //     if (current.data?.EpochTime) {
+  //       console.log('location.data.Key :', location.data.Key)
+  //       dispatch(getForecast({ isMetric: true, cityKey: 215854 }));
+  //     }
+  //   } catch (e) {
+  //     console.log("should be rendered once");
 
-      console.log("e: ", e, "current data: ", current.data);
-    }
-  }, [current]);
+  //     console.log("e: ", e, "current data: ", current.data);
+  //   }
+  // }, [current]);
 
   useEffect(() => {
     if (current.fetchStatus === "success") {

@@ -17,7 +17,7 @@ function App() {
 
   const dispatch = useDispatch();
   const location = useSelector((state) => state.location);
-  // const current = useSelector((state) => state.current);
+  const current = useSelector((state) => state.current);
   const theme = useSelector((state) => state.theme);
 
   // console.log('theme: ', theme)
@@ -27,19 +27,24 @@ function App() {
   }, []);
 
 
-  // useEffect(() => {
-  //     if (location.data?.Key) {
-  //       console.log('works!!!')
-  //       dispatch(getCurrent(location.data.Key));
-  //       dispatch(getForecast())
-  //     } 
-  // }, [location.data]);
-
   useEffect(() => {
     if (location.data?.Key) {
       dispatch(getCurrent(location.data.Key));
     } 
 }, [location.data]);
+
+useEffect(() => {
+  try {
+    if (current.data?.EpochTime) {
+      console.log('location.data.Key :', location.data.Key)
+      dispatch(getForecast({ isMetric: true, cityKey: 215854 }));
+    }
+  } catch (e) {
+    console.log("should be rendered once");
+
+    console.log("e: ", e, "current data: ", current.data);
+  }
+}, [current.data]);
 
 
   const isMobile = useIsMobile()

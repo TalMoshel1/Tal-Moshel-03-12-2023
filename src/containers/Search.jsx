@@ -40,13 +40,16 @@ export function Search() {
     <SearchContainer className='searchSection'>
       <p>{isEnter&& 'yes!'}</p>
       <p>{error && error}</p>
-
       <input
       placeholder={'search'}
         type="text"
         onKeyDown={getCity}
         onChange={(e) => setValue(e.target.value)}
       />
+      {location?.fetchStatus === "success" && <p>loading</p>}
+      {location?.fetchStatus === "error" && <p>error</p>}
+
+
     </SearchContainer>
   );
 }
