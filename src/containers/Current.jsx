@@ -34,7 +34,7 @@ export function Current() {
   // }, [current]);
 
   useEffect(() => {
-    if (current.fetchStatus === "success") {
+    if (current?.fetchStatus === "success") {
       console.log(current.fetchStatus);
       setCurrentValues({
         Key: location.data.Key,
@@ -95,11 +95,12 @@ export function Current() {
     <div className="current-page-container">
       {currentValues && (
         <CurrentContainer className="current-container">
-          <h1>{currentValues.LocalizedName}</h1>
-          <h2>{currentValues.WeatherText}</h2>
-          <h2>
+          <h1 className='localized-name'>{currentValues.LocalizedName}</h1>
+          <h2 className='temperature'>
             {currentValues.Value} {currentValues.Unit}
           </h2>
+          <h2 className='weather-text'>{currentValues.WeatherText}</h2>
+
         </CurrentContainer>
       )}
 
@@ -108,14 +109,14 @@ export function Current() {
           className="button-1"
           onClick={() => dispatch(addToFavorites({ ...currentValues }))}
         >
-          <AiFillHeart color='grey' border='1px solid black'/>
+          <AiFillHeart color='grey'/>
         </IsFavoriteContainer>
       ) : (
         <IsFavoriteContainer
           className="button-1"
           onClick={() => dispatch(removeFromFavorites({ Key: currentValues.Key }))}
         >
-          <AiFillHeart  color='red' border='1px solid black'/>
+          <AiFillHeart  color='red'/>
         </IsFavoriteContainer>
       )}
     </div>
@@ -124,14 +125,32 @@ export function Current() {
 
 const CurrentContainer = styled.div`
 
-background-color: ${(props) => props.theme.colors.elemnetBackgroundColor};
+background-color: ${(props) => props.theme.colors.itemBackground};
 
-border: 1px solid ${(props) => props.theme.colors.BorderColor};
+border: 1px solid ${(props) => props.theme.colors.borderColor};
+
+.localized-name {
+  color: ${(props) => props.theme.colors.lettersBig};
+
+
+}
+
+.weather-text {
+  color: ${(props) => props.theme.colors.lettersSmall};
+
+} 
+
+.temperature {
+  color: ${(props) => props.theme.colors.lettersBig};
+
+
+}
 
 
 `
 
 const IsFavoriteContainer = styled.div`
-background-color: ${(props) => props.theme.colors.elemnetBackgroundColor};
+background-color: ${(props) => props.theme.colors.itemBackground};
+border: 1px solid ${(props) => props.theme.colors.borderColor}
 
 `

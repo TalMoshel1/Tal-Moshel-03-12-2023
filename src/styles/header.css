@@ -43,6 +43,10 @@ a {
   padding-bottom: 0;
 }
 
+.change-colors {
+  font-size: 10px;
+}
+
 
 @media (orientation: landscape), (min-width: 700px) {
 
@@ -50,11 +54,6 @@ a {
     margin-right: 3em
   
   }
-
-  /* a, .list-container { 
-    margin-right: 1em
-  
-  } */
   
   .site-header {
     margin-left: 3em;
@@ -65,20 +64,8 @@ a {
     top: 0
 }
 
-
-
-
-
-  
-  
-  
-  /* a:hover {
-    border-bottom: 3px solid #00566e;
-  
-  } */
-  
-  /* .favorites, .home {
-    border-bottom: 3px solid #00566e;
-  } */
+.change-colors {
+  font-size:1rem;
+}
   
 }

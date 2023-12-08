@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {initializedCurrent} from './objects/intializers.js'
 import { dummyCurrent } from "./objects/dummy-data.js";
+
 export const getCurrent = createAsyncThunk("fetch-current", async (cityKey) => {
   const response = await fetch(
-    `https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=evfOeo7HTiSJxNySGtxtSOiQvtHlNXqi`
+    `https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=AdG6XnaXrK4SjNKQ4HoRhvgaGVDbsGpJ
+    `
   );
   return response.json();
 });

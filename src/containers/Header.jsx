@@ -14,14 +14,16 @@ export function Header() {
   const location = useLocation();
   const isMobile = useIsMobile();
 
-  console.log('from header! ',isMobile)
+  console.log('theme:  ',theme)
 
 
   const handleThemeChange = () => {
     if (theme.darkMode) {
       dispatch(setDefaultTheme());
+      console.log('need to change')
     } else {
-      return dispatch(setDarkTheme());
+      dispatch(setDarkTheme());
+
     }
   };
 
@@ -40,7 +42,7 @@ export function Header() {
           >
             FAVORITES
           </Link>
-          <button onClick={handleThemeChange}>CHANGE COLORS!</button>
+          <button className='change-colors' onClick={handleThemeChange}>CHANGE COLORS!</button>
         </div>
       </HeaderContainer>
     </>
@@ -48,30 +50,29 @@ export function Header() {
 }
 
 const HeaderContainer = styled.header`
-background-color: white;
-border: 1px solid ${(props) => props.theme.colors.BorderColor};
-  color: ${(props) => props.theme.colors.color};
-  border-radius: 2px;
+background-color: ${(props) => props.theme.colors.headerBackground};
+border: 1px solid ${(props) => props.theme.colors.borderColor};
+color: ${(props) => props.theme.colors.lettersBig};
+border-radius: 2px;
 
   a { 
-    color: ${(props) => props.theme.colors.color};
+    color: ${(props) => props.theme.colors.lettersBig};
+    border: 1px solid ${(props) => props.theme.colors.headerBackground};
+
   }
 
   a:hover {
-    border-bottom: 3px solid ${(props) => props.theme.colors.color};
-  
+    border-bottom: 3px solid ${(props) => props.theme.colors.lettersBig};
   }
 
-  button { 
-    color: ${(props) => props.theme.colors.color};
+  .change-colors { 
+    color: ${(props) => props.theme.colors.lettersBig};
     cursor: pointer;
-    transition: font-size 0.5s;
-
-
+    transition: color 0.3s;
   }
 
-  button:hover {
-    font-size: 1.5rem
+  .change-colors:hover {
+    color: ${(props) => props.theme.colors.lettersSmall};
   }
 
 

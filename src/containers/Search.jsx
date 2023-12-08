@@ -21,7 +21,7 @@ export function Search() {
     const value = event.target.value;
     if (!isNotEnglish(value)) {
       if (event.key === "Enter" || event.keyCode === 13) {
-        console.log("dispatch search value!");
+        console.log("dispatch search value! :", value);
          return dispatch(getLocation(value));
       }
     }
@@ -38,8 +38,7 @@ export function Search() {
 
   return (
     <SearchContainer className='searchSection'>
-      <p>{isEnter&& 'yes!'}</p>
-      <p>{error && error}</p>
+      <p class='english-only'>{error && error}</p>
       <input
       placeholder={'search'}
         type="text"
@@ -57,7 +56,13 @@ export function Search() {
 const SearchContainer = styled.section`
 
 input {
-  background-color: ${(props) => props.theme.colors.elemnetBackgroundColor};
+  background-color: ${(props) => props.theme.colors.itemBackground};
+  color:  ${(props) => props.theme.colors.lettersBig};
+  border: 1px solid ${(props) => props.theme.colors.lettersBig};
+}
+
+.searchSection {
+  background-color: ${(props) => props.theme.colors.backgroundColor};
 }
 
 

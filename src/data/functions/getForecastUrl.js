@@ -4,11 +4,13 @@ export function getForecastUrl(isMetric, cityKey) {
     try {
         if (isMetric) {
             console.log('city Key: ', cityKey)
-            url = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=evfOeo7HTiSJxNySGtxtSOiQvtHlNXqi&metric=true`
+            url = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=AdG6XnaXrK4SjNKQ4HoRhvgaGVDbsGpJ
+            &metric=true`
             console.log('url :', url)
             return url
         }
-        url =  `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=evfOeo7HTiSJxNySGtxtSOiQvtHlNXqi`
+        url =  `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=AdG6XnaXrK4SjNKQ4HoRhvgaGVDbsGpJ
+        `
         console.log('city Key: ', cityKey)
         console.log('url :', url)
         return url

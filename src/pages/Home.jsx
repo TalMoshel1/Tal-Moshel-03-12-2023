@@ -35,7 +35,7 @@ export function Home() {
 
 const HomeStyle = styled.div`
 
-    background-color: ${(props) => props.theme.colors.pageBackgroundColor};
+    background-color: ${(props) => props.theme.colors.backgroundColor};
   
 `
 

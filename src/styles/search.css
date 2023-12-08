@@ -7,6 +7,11 @@
 
 }
 
+.english-only {
+  margin-top: 5px;
+}
+
+
 .searchSection p {
   width:50px;
   height:50px;
@@ -27,5 +32,13 @@ h2, p {
     width: 100%;
     max-width: 150px;
     border: 1px solid grey
+
+  }
+
+
+  @media (orientation: landscape), (min-width: 700px) {
+    .english-only {
+          margin-top: 3em;
+    }
 
   }

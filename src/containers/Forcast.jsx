@@ -11,6 +11,7 @@ import { getForecast } from "../data/forecastThunk";
 import { useDispatch } from "react-redux";
 import '../styles/changeUnitButton.css'
 import {useIsCUnit} from '../Context/IsCunit'
+import styled from "styled-components";
 
 export function Forecast() {
   const forecast = useSelector((state) => state.forecast);
@@ -41,7 +42,7 @@ export function Forecast() {
   if (forecast.data?.DailyForecasts) {
     return (
       <div className='forecast-container'>
-        <button className="changeUnitButton" onClick={handleChangeUnit}>view in {isCUnit ? 'F' : 'C'}</button>
+        <UnitButtonContainer className="changeUnitButton" onClick={handleChangeUnit}>view in {isCUnit ? 'F' : 'C'}</UnitButtonContainer>
         <section className="forecast">
           {forecast.data.DailyForecasts.map((day) => {
             return (
@@ -61,3 +62,9 @@ export function Forecast() {
     );
   }
 }
+
+const UnitButtonContainer = styled.button`
+background-color: ${(props) => props.theme.colors.itemBackground};
+color: ${(props) => props.theme.colors.lettersSmall};
+
+`
