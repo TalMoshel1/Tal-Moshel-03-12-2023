@@ -15,7 +15,7 @@ export function Search() {
   // const {changeLocation} = locationSlice.actions
   // const {changeCurrentWeather} = currentWeatherSlice.actions
   const dispatch = useDispatch();
-  const { location } = useSelector((state) => state.location);
+  const  location  = useSelector((state) => state.location);
 
   const getCity = (event) => {
     const value = event.target.value;
@@ -36,8 +36,15 @@ export function Search() {
     
   }, [value]);
 
+  useEffect(()=>{
+      if (location.error) {
+        setError((location.error.err))
+      }
+    
+  },[location.error])
+
   return (
-    <SearchContainer className='searchSection'>
+    <SearchContainer className='search-section '>
       <p class='english-only'>{error && error}</p>
       <input
       placeholder={'search'}
@@ -45,8 +52,8 @@ export function Search() {
         onKeyDown={getCity}
         onChange={(e) => setValue(e.target.value)}
       />
-      {location?.fetchStatus === "success" && <p>loading</p>}
-      {location?.fetchStatus === "error" && <p>error</p>}
+      {/* {location?.fetchStatus === "success" && <p>loading</p>}
+      {location?.fetchStatus === "error" && <p>error</p>} */}
 
 
     </SearchContainer>
@@ -61,7 +68,7 @@ input {
   border: 1px solid ${(props) => props.theme.colors.lettersBig};
 }
 
-.searchSection {
+.search-section  {
   background-color: ${(props) => props.theme.colors.backgroundColor};
 }
 

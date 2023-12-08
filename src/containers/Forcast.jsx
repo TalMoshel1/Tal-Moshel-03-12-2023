@@ -30,9 +30,9 @@ export function Forecast() {
     }
   }
 
-  if (forecast.fetchStatus === "error") {
-    return <p>Error getting the data</p>
-  }
+  // if (forecast.fetchStatus === "error") {
+  //   return <p>Error getting the data</p>
+  // }
 
   if (forecast.fetchStatus === "loading") {
     return <p>Spinner</p>

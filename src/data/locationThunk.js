@@ -4,15 +4,21 @@ import { initializeLocation } from "./objects/intializers";
 
 export const getLocation = createAsyncThunk(
   "fetch-location",
-  async (location) => {
-    const response = await fetch(
-      `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=AdG6XnaXrK4SjNKQ4HoRhvgaGVDbsGpJ
-      &q=${location}`
-    );
-    if (!response) {
-      throw new Error("Location not found");
+  async (location, { rejectWithValue }) => {
+    try {
+      const response = await fetch(
+        `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=kLBFG7ks0fYmfw5znsZ5QYEkkgZbHsjh&q=${location}`
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      return response.json();
+    } catch (error) {
+      console.error(error);
+      throw rejectWithValue(error.message);
     }
-    return response.json();
   }
 );
 // export const getLocation = createAsyncThunk(
@@ -29,13 +35,21 @@ const locationSlice = createSlice({
   initialState: {
     data: initializeLocation,
     fetchStatus: "",
+    error: null
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getLocation.fulfilled, (state, action) => {
-        state.data = action.payload[0];
-        state.fetchStatus = "success";
+        if (Array.isArray(action.payload)) {
+          if (action.payload.length > 0 ) {
+            state.data = action.payload[0];
+            state.fetchStatus = "success";
+            state.error = null; 
+          } else {
+            state.error = {err : "cant find city, please try again"}
+          }
+        }
       })
       .addCase(getLocation.pending, (state) => {
         state.fetchStatus = "loading";

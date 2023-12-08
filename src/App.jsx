@@ -1,10 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { getLocation } from "./data/locationThunk";
 import { getCurrent } from './data/currentThunk'
 import { getForecast } from "./data/forecastThunk";
 import { useIsMobile } from "./Context/Context";
+import { useGetError } from "./containers/getError";
 import { Header } from "./containers/Header";
 import { Home } from "./pages/Home";
 import { Favorites } from "./pages/Favorites";
@@ -25,6 +26,8 @@ function App() {
   useEffect(() => {
     dispatch(getLocation("tel aviv"));
   }, []);
+
+  useGetError()
 
 
   useEffect(() => {
@@ -49,20 +52,14 @@ useEffect(() => {
 
   const isMobile = useIsMobile()
 
-  if (location.fetchStatus === "error") {
-    return <p>Error getting the data</p>
-  }
 
-  if (location.fetchStatus === "loading") {
-    return <p>Spinner</p>
-
-  }
 
   return (
     <>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           {!isMobile && <Header />}
+          {/* {(location.fetchStatus === "error" || current.fetchStatus === "error") && <Error className='error'>Error getting the data</Error>} */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/favorites" element={<Favorites />} />
@@ -97,3 +94,4 @@ useEffect(() => {
 }
 
 export default App;
+
