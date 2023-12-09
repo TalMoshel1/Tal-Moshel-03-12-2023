@@ -7,7 +7,7 @@ export const getLocation = createAsyncThunk(
   async (location, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=AdG6XnaXrK4SjNKQ4HoRhvgaGVDbsGpJ'
+        `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=4eG4ZizaYAjzSMwQfZX7va8Gc5HwVpwk'
         &q=${location}`
       );
 
