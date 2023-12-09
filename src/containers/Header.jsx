@@ -20,10 +20,8 @@ export function Header() {
   const handleThemeChange = () => {
     if (theme.darkMode) {
       dispatch(setDefaultTheme());
-      console.log('need to change')
     } else {
       dispatch(setDarkTheme());
-
     }
   };
 
@@ -33,7 +31,6 @@ export function Header() {
       <Animation className='animation'></Animation>
         {!isMobile && <h1 className="site-header">Tal Moshel Weather App</h1>}
         <div className={`list-container ${isMobile && 'spread-header-items-evenly'}`}>
-          {/* <FavoritesButton/> */}
           <Link to="/" className={`${location.pathname === "home"  && "home"}`}>
             HOME
           </Link>
@@ -43,10 +40,8 @@ export function Header() {
           >
             FAVORITES
           </Link>
-          {/* <button className='change-colors' onClick={handleThemeChange}>CHANGE COLORS!</button> */}
           <ToggleTheme/>
         </div>
-    
       </HeaderContainer>
     </>
   );
@@ -63,7 +58,6 @@ position: sticky;
     color: ${(props) => props.theme.colors.lettersBig};
     border: 1px solid ${(props) => props.theme.colors.headerBackground};
     z-index: 1;
-
   }
 
   a:hover {

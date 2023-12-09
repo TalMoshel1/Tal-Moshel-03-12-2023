@@ -7,7 +7,7 @@ export const getLocation = createAsyncThunk(
   async (location, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=evfOeo7HTiSJxNySGtxtSOiQvtHlNXqi
+        `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=AdG6XnaXrK4SjNKQ4HoRhvgaGVDbsGpJ'
         &q=${location}`
       );
 
@@ -16,9 +16,8 @@ export const getLocation = createAsyncThunk(
       }
 
       return response.json();
-    } catch (error) {
-      console.error(error);
-      throw rejectWithValue(error.message);
+    } catch (e) {
+      throw rejectWithValue(e.message);
     }
   }
 );
@@ -27,7 +26,7 @@ export const getLocation = createAsyncThunk(
 const locationSlice = createSlice({
   name: "location",
   initialState: {
-    data: initializeLocation,
+    data: {},
     fetchStatus: "",
     error: null
   },
@@ -35,18 +34,13 @@ const locationSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getLocation.fulfilled, (state, action) => {
-        console.log('?')
         if (Array.isArray(action.payload)) {
-          console.log('??')
           if (action.payload.length > 0 ) {
             state.fetchStatus = "success";
             state.error = null; 
-            console.log('???')
             state.data = action.payload[0];
 
           } else {
-            console.log('????')
-            console.log('gets here')
             state.fetchStatus = 'error'
             state.error = "can't find city, please try again"
           }
@@ -55,13 +49,10 @@ const locationSlice = createSlice({
         }
       }) 
       .addCase(getLocation.pending, (state) => {
-
         state.fetchStatus = "loading";
-        // state.error = "please try again later"
       })
       .addCase(getLocation.rejected, (state, action) => {
         state.fetchStatus = "Failed to fetch";
-        console.log('!!!!!!!!!!!')
         state.error = "please try again later"
       });
   },

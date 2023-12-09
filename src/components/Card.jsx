@@ -4,7 +4,6 @@ import { getLocation } from "../data/locationThunk";
 import favoritesSlice from "../data/favouritesSlice";
 import "../styles/card.css";
 import styled from "styled-components";
-import themeSlice from "../data/themeSlice.js";
 
 export function Card({
   Icon,
@@ -17,6 +16,7 @@ export function Card({
   value,
   weatherText,
   id,
+  isNoFavorites
 }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,12 +31,23 @@ export function Card({
     navigate("/");
   };
 
+  const NavigateHome = () => {
+    navigate("/");
+  }
+
+  if (isNoFavorites) {
+    return (
+      <AddFavorites onClick={NavigateHome} className='add-favorites'>
+          Click to Add favorites!
+      </AddFavorites>
+    );
+  }
+
+
   if (!date) {
     /*QUESTION: 'the the first note of each prop isn't always Capital? Answer: Because Date word is saved to be a class'*/
     return (
       <CardTheme className={"favorite"}>
-        {/* <img src="https://developer.accuweather.com/sites/default/files/14-s.png" alt="" /> */}
-
         <div onClick={homeOtherCity} className="favorite-city">
           <div>
             <h1 className="city">{localizedName}</h1>
@@ -99,7 +110,7 @@ const CardTheme = styled.section`
 
 
   
-  .favorite-city {
+   .favorite-city {
     display: flex;
     flex-direction: column;
     transition: font-size: 0.5s
@@ -111,7 +122,7 @@ const CardTheme = styled.section`
     font-size: 1.5rem;
 
   }
-  .remove-favorite {
+   .remove-favorite {
     transition: background-color 0.3s;
   }
 
@@ -122,8 +133,44 @@ const CardTheme = styled.section`
 
   }
 
+  .add-favorites {
+      all: initial;
+      font-family: 'Poppins', sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+      color: ${(props) => props.theme.colors.lettersBig};
+      font-size: 1rem;
+      translation: color 0.3s;
+      border: 1px solid ${(props) => props.theme.colors.borderColor};
+      border-radius: 22px;
+      padding:20px;
+  }
+
+  .add-favorites:hover {
+    color: ${(props) => props.theme.colors.lettersSmall};
+
+  }
+
  
 
   
 
 `;
+
+const AddFavorites = styled.button`
+  all: initial;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  color: ${(props) => props.theme.colors.lettersBig};
+  font-size: 1rem;
+  translation: color 0.3s;
+  border: 1px solid ${(props) => props.theme.colors.borderColor};
+  border-radius: 22px;
+  padding:20px;
+
+
+:hover {
+color: ${(props) => props.theme.colors.lettersSmall};
+
+}`

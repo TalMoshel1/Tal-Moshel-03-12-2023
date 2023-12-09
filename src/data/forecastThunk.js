@@ -9,21 +9,14 @@ export const getForecast = createAsyncThunk(
     try {
       const url = getForecastUrl(isMetric, cityKey);
       const response = await fetch(url);
-      console.log(response)
       return response.json();
     } catch (e) {
-      console.log(e);
+      throw new Error(e);
     }
   }
 );
 
-// /forecasts/v1/daily/5day/${cityKey}?apikey=eX0BvLwq6EEeVFtvBg7usc23ydzRticl&metric=true
 
-// export const getForecast = createAsyncThunk("fetch-forecast", async (cityKey) => {
-//   const response =Promise.resolve(dummyForecast)
-
-//   return response
-// });
 
 const forecastSlice = createSlice({
   name: "forecast",
@@ -37,23 +30,19 @@ const forecastSlice = createSlice({
     builder
       .addCase(getForecast.fulfilled, (state, action) => {
         if (!action.payload) {
-          console.log('???')
           state.error = "cant find forecast data, please try again later!";
           return
         } else {
-          console.log(action.payload)
           state.data = action.payload;
           state.error = null
         }
       })
       .addCase(getForecast.pending, (state, action) => {
-        console.log(action.payload)
         state.data = action.payload;
         state.error = "can't find display forecast, please try later!!";
         state.fetchStatus = "loading";
       })
       .addCase(getForecast.rejected, (state, action) => {
-        console.log(action.error)
         state.error = "can't find display forecast, please try later!!!";
       });
   },

@@ -1,8 +1,11 @@
-# React + Vite
+Hi,
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Please open the folder with VSC or other code editor.
+Command line instructions to run the project: 
 
-Currently, two official plugins are available:
+1) in the command line, write 'cd WeatherApp'
+2) write: npm install --global yarn
+3) from folder 'WeatherApp', write 'yarn install'
+4) write: 'yarn dev'
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Enjoy.

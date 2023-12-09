@@ -4,17 +4,17 @@ export function getForecastUrl(isMetric, cityKey) {
     try {
         if (isMetric) {
   
-            url = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=evfOeo7HTiSJxNySGtxtSOiQvtHlNXqi
+            url = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=AdG6XnaXrK4SjNKQ4HoRhvgaGVDbsGpJ'
             &metric=true`
             return url
         }
-        url =  `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=evfOeo7HTiSJxNySGtxtSOiQvtHlNXqi
+        url =  `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=AdG6XnaXrK4SjNKQ4HoRhvgaGVDbsGpJ'
         `
         return url
 
     }
 
     catch(e) {
-        console.log('error fetching: ', e)
+        throw new Error('error fetching: ', e)
     }
 }

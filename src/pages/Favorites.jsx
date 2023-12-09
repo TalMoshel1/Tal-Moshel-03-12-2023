@@ -6,15 +6,16 @@ import styled from "styled-components"
 
 export function Favorites() {
     const favorites = useSelector((state)=>state.favorites.favorites)
-    const current = useSelector((state) => state.current);
-    const location = useSelector((state) => state.location);
-    const theme = useSelector((state) => state.theme);
 
+    if (!favorites.length > 0) {
+        return (
+            <FavoritesContainer className='favorites-container'>
+                <Card isNoFavorites={true}/>
+        </FavoritesContainer>
+        )
 
-
-    console.log('favorites: ', favorites)
-
-        return (     
+    } 
+    return (     
             <FavoritesContainer className='favorites-container'>
             {favorites.map((f)=> <Card id={f.Key} unit={f.Unit} value={f.Value} weatherText={f.WeatherText} localizedName={f.LocalizedName}/>)}
         </FavoritesContainer>

@@ -3,19 +3,19 @@ import { useState } from "react";
 
 
 export function UseGeoLocation() {
+
+  
   const [location, setLocation] = useState({
     loaded: false,
-    coordinates: { lat: "", lng: "" },
+    coordinates: { lat: "", lon: "" },
   });
-
-  console.log(32.17801967818343, 34.85072588975957)
 
   const onSuccess = (location) => {
     setLocation({
         loaded: true,
         coordinates: {
             lat: location.coords.latitude,
-            lng: location.coords.longitude
+            lon: location.coords.longitude
 
         }
     })

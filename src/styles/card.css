@@ -19,7 +19,7 @@
     font-size:1rem;
 }
 
-.favorite { 
+.no-favorites-card .favorite { 
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +33,7 @@
     padding: 1em;
   }
 
-.remove-favorite {
+.add-favorites .remove-favorite {
     width: 100%;
     flex-grow: 1;
     min-height: 3vh;
