@@ -35,6 +35,10 @@ export function Current() {
 
   const [isFavorite, setIsFavorite] = useState();
 
+  useEffect(()=>{
+    console.log(isFavorite)
+  },[isFavorite])
+
   const isFavoriteFunc = () => {
     if (favorites.length === 0) {
       return false;
@@ -53,12 +57,13 @@ export function Current() {
 
   useEffect(() => {
     if (favorites.length > 0) {
+      console.log('favorites loaded')
       const result = isFavoriteFunc();
       console.log(result);
     } else {
       setIsFavorite(false)
     }
-  }, [favorites]);
+  }, );
 
   return (
     <div className="current-page-container">
