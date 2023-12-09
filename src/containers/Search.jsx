@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import hai from "../../get-location-hai-value.json";
-// import locationSlice from "../data/locationSlice";
 import { getLocation } from "../data/locationThunk";
-import currentWeatherSlice from "../data/currentWeatherSlice";
 import { isNotEnglish } from "../../helpers/isEnglish";
 import '../styles/search.css'
 import styled from "styled-components";
@@ -11,9 +8,6 @@ import styled from "styled-components";
 export function Search() {
   const [error, setError] = useState('');
   const [value, setValue] = useState('');
-  const [isEnter, setIsEnter] = useState('')
-  // const {changeLocation} = locationSlice.actions
-  // const {changeCurrentWeather} = currentWeatherSlice.actions
   const dispatch = useDispatch();
   const  location  = useSelector((state) => state.location);
 
@@ -21,7 +15,6 @@ export function Search() {
     const value = event.target.value;
     if (!isNotEnglish(value)) {
       if (event.key === "Enter" || event.keyCode === 13) {
-        console.log("dispatch search value! :", value);
          return dispatch(getLocation(value));
       }
     }
@@ -33,15 +26,18 @@ export function Search() {
       } else {
         setError('');
       }
-    
   }, [value]);
 
   useEffect(()=>{
       if (location.error) {
-        setError((location.error.err))
+        console.log(location.error)
+        return setError(location.error)
+      }
+      if (location.fetchStatus === 'error') {
+        return setError("Please try later")
       }
     
-  },[location.error])
+  },[location.error, location.fetchStatus])
 
   return (
     <SearchContainer className='search-section '>
@@ -52,10 +48,6 @@ export function Search() {
         onKeyDown={getCity}
         onChange={(e) => setValue(e.target.value)}
       />
-      {/* {location?.fetchStatus === "success" && <p>loading</p>}
-      {location?.fetchStatus === "error" && <p>error</p>} */}
-
-
     </SearchContainer>
   );
 }
@@ -69,7 +61,7 @@ input {
 }
 
 .search-section  {
-  background-color: ${(props) => props.theme.colors.backgroundColor};
+  background-color: ${(props) => props.theme.colors.background};
 }
 
 

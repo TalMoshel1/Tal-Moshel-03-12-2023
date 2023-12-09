@@ -26,6 +26,6 @@ export function Favorites() {
 }
 
 const FavoritesContainer = styled.section`
-background-color: ${(props) => props.theme.colors.backgroundColor};
+background-color: ${(props) => props.theme.colors.background};
 
 `

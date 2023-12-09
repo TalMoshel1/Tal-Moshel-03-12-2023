@@ -4,12 +4,13 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import forcast from "../../five-day-daily-forcast.json";
 // import getCurrentWeatherJson from '../../get-current-weather.json'
 // import currentWeatherSlice from '../data/currentWeatherSlice'
-import "../styles/forecast.css";
 import { Card } from "../components/Card";
 import { useEffect, useState } from "react";
 import { getForecast } from "../data/forecastThunk";
 import { useDispatch } from "react-redux";
 import '../styles/changeUnitButton.css'
+import "../styles/forecast.css";
+import '../styles/error.css'
 import {useIsCUnit} from '../Context/IsCunit'
 import styled from "styled-components";
 
@@ -30,14 +31,20 @@ export function Forecast() {
     }
   }
 
-  // if (forecast.fetchStatus === "error") {
-  //   return <p>Error getting the data</p>
-  // }
 
-  if (forecast.fetchStatus === "loading") {
-    return <p>Spinner</p>
+  useEffect(()=>{
+    console.log('forecast: ', forecast)
+  },[forecast])
 
+  if (forecast.error) {
+    return <div className='forecast-container'>
+      <p className='error'>
+      {forecast.error}
+      </p>
+    </div>
   }
+
+
 
   if (forecast.data?.DailyForecasts) {
     return (

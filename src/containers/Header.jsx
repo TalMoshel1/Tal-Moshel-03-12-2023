@@ -5,6 +5,7 @@ import themeSlice from "../data/themeSlice";
 import { styled } from "styled-components";
 import "../styles/header.css";
 import { useIsMobile } from "../Context/Context.jsx";
+import { ToggleTheme } from "../components/ToggleTheme.jsx";
 
 export function Header() {
   const theme = useSelector((state) => state.theme);
@@ -13,8 +14,6 @@ export function Header() {
 
   const location = useLocation();
   const isMobile = useIsMobile();
-
-  console.log('theme:  ',theme)
 
 
   const handleThemeChange = () => {
@@ -42,7 +41,8 @@ export function Header() {
           >
             FAVORITES
           </Link>
-          <button className='change-colors' onClick={handleThemeChange}>CHANGE COLORS!</button>
+          {/* <button className='change-colors' onClick={handleThemeChange}>CHANGE COLORS!</button> */}
+          <ToggleTheme/>
         </div>
       </HeaderContainer>
     </>

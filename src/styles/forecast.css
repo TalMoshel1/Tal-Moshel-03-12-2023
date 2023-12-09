@@ -20,7 +20,8 @@
     align-items: center;
     width: 100vw;
     margin-bottom: 1em;
-    flex-grow:1
+    flex-grow:1;
+    text-align: center;
 }
 
 

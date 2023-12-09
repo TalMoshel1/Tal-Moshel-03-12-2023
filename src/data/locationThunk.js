@@ -7,7 +7,8 @@ export const getLocation = createAsyncThunk(
   async (location, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=kLBFG7ks0fYmfw5znsZ5QYEkkgZbHsjh&q=${location}`
+        `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=eX0BvLwq6EEeVFtvBg7usc23ydzRticl
+        &q=${location}`
       );
 
       if (!response.ok) {
@@ -21,14 +22,7 @@ export const getLocation = createAsyncThunk(
     }
   }
 );
-// export const getLocation = createAsyncThunk(
-//   "fetch-location",
-//   async (location) => {
-//     const response = Promise.resolve(dummyLocation);
 
-//     return response;
-//   }
-// );
 
 const locationSlice = createSlice({
   name: "location",
@@ -47,15 +41,20 @@ const locationSlice = createSlice({
             state.fetchStatus = "success";
             state.error = null; 
           } else {
-            state.error = {err : "cant find city, please try again"}
+            state.fetchStatus = 'error'
+            state.error = "can't find city, please try again"
           }
+        } else {
+          state.error = action.payload.Message
         }
-      })
+      }) 
       .addCase(getLocation.pending, (state) => {
         state.fetchStatus = "loading";
+        state.error = "please try again later"
       })
-      .addCase(getLocation.rejected, (state) => {
-        state.fetchStatus = "error";
+      .addCase(getLocation.rejected, (state, action) => {
+        state.fetchStatus = "Failed to fetch";
+        state.error = "please try again later"
       });
   },
 });

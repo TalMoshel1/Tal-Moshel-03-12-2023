@@ -47,6 +47,11 @@ a {
   font-size: 10px;
 }
 
+.list-container  {
+  display: flex;
+  align-items: center;
+}
+
 
 @media (orientation: landscape), (min-width: 700px) {
 

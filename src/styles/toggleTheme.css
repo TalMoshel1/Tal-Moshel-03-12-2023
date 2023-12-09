@@ -1,0 +1,17 @@
+.toggle-switch {
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    cursor: pointer;
+    width: 3.75rem;
+    height: 1.875rem;
+}
+
+.slider {
+
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}

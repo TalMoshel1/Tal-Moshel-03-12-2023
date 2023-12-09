@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { getLocation } from "./data/locationThunk";
 import { getCurrent } from './data/currentThunk'
@@ -9,8 +11,7 @@ import { useGetError } from "./containers/getError";
 import { Header } from "./containers/Header";
 import { Home } from "./pages/Home";
 import { Favorites } from "./pages/Favorites";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import {UseGeoLocation} from './Context/UseGeoLocation'
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
   const location = useSelector((state) => state.location);
   const current = useSelector((state) => state.current);
   const theme = useSelector((state) => state.theme);
-
+  const geoLocation = UseGeoLocation()
   // console.log('theme: ', theme)
 
   useEffect(() => {
@@ -32,15 +33,16 @@ function App() {
 
   useEffect(() => {
     if (location.data?.Key) {
+      console.log(location)
       dispatch(getCurrent(location.data.Key));
+      dispatch(getForecast({ isMetric: true, cityKey: location.data.Key }));
     } 
 }, [location.data]);
 
 useEffect(() => {
   try {
     if (current.data?.EpochTime) {
-      console.log('location.data.Key :', location.data.Key)
-      dispatch(getForecast({ isMetric: true, cityKey: 215854 }));
+      console.log('location.data.Key ?????????????:', location.data.Key)
     }
   } catch (e) {
     console.log("should be rendered once");
@@ -59,12 +61,13 @@ useEffect(() => {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           {!isMobile && <Header />}
-          {/* {(location.fetchStatus === "error" || current.fetchStatus === "error") && <Error className='error'>Error getting the data</Error>} */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/favorites" element={<Favorites />} />
           </Routes>
           {isMobile && <Header />}
+
+          {geoLocation.loaded ? console.log(JSON.stringify(geoLocation)) : 'Location data not available'}
 
         </ThemeProvider>
       </BrowserRouter>

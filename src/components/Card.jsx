@@ -21,7 +21,6 @@ export function Card({
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { removeFromFavorites } = favoritesSlice.actions;
-  console.log("key from card:", id);
 
   const handleClickRemoveFavorite = () => {
     dispatch(removeFromFavorites({ Key: id }));
