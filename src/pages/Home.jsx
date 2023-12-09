@@ -14,7 +14,7 @@ import {Header} from '../containers/Header.jsx'
 import '../styles/home.css'
 import styled from "styled-components";
 import themeSlice from "../data/themeSlice.js";
-
+import { Animation } from "../containers/Animation.jsx";
 export function Home() {
 
   const isMobile = useIsMobile()

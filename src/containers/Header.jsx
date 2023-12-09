@@ -6,6 +6,7 @@ import { styled } from "styled-components";
 import "../styles/header.css";
 import { useIsMobile } from "../Context/Context.jsx";
 import { ToggleTheme } from "../components/ToggleTheme.jsx";
+import {Animation} from "./Animation.jsx";
 
 export function Header() {
   const theme = useSelector((state) => state.theme);
@@ -29,6 +30,7 @@ export function Header() {
   return (
     <>
       <HeaderContainer className={isMobile && 'sticky-header'}>
+      <Animation className='animation'></Animation>
         {!isMobile && <h1 className="site-header">Tal Moshel Weather App</h1>}
         <div className={`list-container ${isMobile && 'spread-header-items-evenly'}`}>
           {/* <FavoritesButton/> */}
@@ -44,6 +46,7 @@ export function Header() {
           {/* <button className='change-colors' onClick={handleThemeChange}>CHANGE COLORS!</button> */}
           <ToggleTheme/>
         </div>
+    
       </HeaderContainer>
     </>
   );
@@ -54,10 +57,12 @@ background-color: ${(props) => props.theme.colors.headerBackground};
 border: 1px solid ${(props) => props.theme.colors.borderColor};
 color: ${(props) => props.theme.colors.lettersBig};
 border-radius: 2px;
+position:relative;
 
   a { 
     color: ${(props) => props.theme.colors.lettersBig};
     border: 1px solid ${(props) => props.theme.colors.headerBackground};
+    z-index: 1;
 
   }
 
@@ -77,7 +82,17 @@ border-radius: 2px;
 
 
 
+
+
   
  
 
 `;
+
+
+// const Animation = styled.div`
+
+// position: relative;
+//     right: 10px;
+// }
+// `
