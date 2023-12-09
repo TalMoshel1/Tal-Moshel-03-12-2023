@@ -57,7 +57,7 @@ background-color: ${(props) => props.theme.colors.headerBackground};
 border: 1px solid ${(props) => props.theme.colors.borderColor};
 color: ${(props) => props.theme.colors.lettersBig};
 border-radius: 2px;
-position:relative;
+position: sticky;
 
   a { 
     color: ${(props) => props.theme.colors.lettersBig};
