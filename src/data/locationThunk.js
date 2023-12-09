@@ -35,12 +35,18 @@ const locationSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getLocation.fulfilled, (state, action) => {
+        console.log('?')
         if (Array.isArray(action.payload)) {
+          console.log('??')
           if (action.payload.length > 0 ) {
-            state.data = action.payload[0];
             state.fetchStatus = "success";
             state.error = null; 
+            console.log('???')
+            state.data = action.payload[0];
+
           } else {
+            console.log('????')
+            console.log('gets here')
             state.fetchStatus = 'error'
             state.error = "can't find city, please try again"
           }
@@ -49,11 +55,13 @@ const locationSlice = createSlice({
         }
       }) 
       .addCase(getLocation.pending, (state) => {
+
         state.fetchStatus = "loading";
-        state.error = "please try again later"
+        // state.error = "please try again later"
       })
       .addCase(getLocation.rejected, (state, action) => {
         state.fetchStatus = "Failed to fetch";
+        console.log('!!!!!!!!!!!')
         state.error = "please try again later"
       });
   },

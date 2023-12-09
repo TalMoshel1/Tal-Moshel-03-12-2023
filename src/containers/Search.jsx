@@ -34,7 +34,7 @@ export function Search() {
         return setError(location.error)
       }
       if (location.fetchStatus === 'error') {
-        return setError("Please try later")
+        return setError("Please try later!!")
       }
     
   },[location.error, location.fetchStatus])

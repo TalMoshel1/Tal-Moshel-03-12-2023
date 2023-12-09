@@ -6,6 +6,8 @@
     cursor: pointer;
     width: 3.75rem;
     height: 1.875rem;
+    /* max-width: 60px;
+    max-height: 30px; */
 }
 
 .slider {

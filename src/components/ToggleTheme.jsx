@@ -35,10 +35,12 @@ const ToggleSliderContainer = styled.button`
         transform: ${(props) => props.theme.toggleTransform};
         transition: background-color 0.3s;
 
+
       }
 
       .slider:hover {
         background-color: ${(props) => props.theme.colors.toggleHover};
+  
       }
 
 
