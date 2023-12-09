@@ -14,10 +14,6 @@ export const getCurrent = createAsyncThunk("fetch-current", async (cityKey) => {
   
 });
 
-// export const background = createAsyncThunk("fetch-current", async (cityKey) => {
-//   const response = Promise.resolve(dummyCurrent)
-//   return response
-// });
 
 const currentSlice = createSlice({
   name: "current",
