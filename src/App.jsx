@@ -19,22 +19,22 @@ function App() {
   const location = useSelector((state) => state.location);
   const current = useSelector((state) => state.current);
   const theme = useSelector((state) => state.theme);
-  const geoLocation = UseGeoLocation()
+  // const geoLocation = UseGeoLocation()
 
   useEffect(() => {
+    console.log('???')
     dispatch(getLocation("tel aviv"));
   }, []);
 
 
   useEffect(() => {
     if (location.data?.Key) {
+      console.log('location.data?.Key: ', location.data?.Key)
       console.log(location)
       dispatch(getCurrent(location.data.Key));
       dispatch(getForecast({ isMetric: true, cityKey: location.data.Key }));
     } 
 }, [location.data]);
-
-
 
 
   const isMobile = useIsMobile()
