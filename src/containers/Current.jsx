@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { AiFillHeart } from "react-icons/ai";
 import favoritesSlice from "../data/favouritesSlice";
-import { useLocation } from "react-router-dom";
 import "../styles/current.css";
 import styled from "styled-components";
 
@@ -35,9 +34,6 @@ export function Current() {
 
   const [isFavorite, setIsFavorite] = useState();
 
-  useEffect(()=>{
-    console.log(isFavorite)
-  },[isFavorite])
 
   const isFavoriteFunc = () => {
     if (favorites.length === 0) {
@@ -59,7 +55,6 @@ export function Current() {
     if (favorites.length > 0) {
       console.log('favorites loaded')
       const result = isFavoriteFunc();
-      console.log(result);
     } else {
       setIsFavorite(false)
     }
@@ -119,5 +114,6 @@ border: 1px solid ${(props) => props.theme.colors.borderColor};
 
 const IsFavoriteContainer = styled.div`
 background-color: ${(props) => props.theme.colors.itemBackground};
-border: 1px solid ${(props) => props.theme.colors.borderColor}
+border: 1px solid ${(props) => props.theme.colors.borderColor};
+cursor: pointer;
 `

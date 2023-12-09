@@ -8,12 +8,14 @@ export function UseGeoLocation() {
     coordinates: { lat: "", lng: "" },
   });
 
+  console.log(32.17801967818343, 34.85072588975957)
+
   const onSuccess = (location) => {
     setLocation({
         loaded: true,
         coordinates: {
             lat: location.coords.latitude,
-            lng: location.coords.latitude
+            lng: location.coords.longitude
 
         }
     })

@@ -5,7 +5,6 @@
     flex-direction: column;
     width: 80%;
     min-height: 200px;
-    /* margin-right: 1.75%; */
     border-radius: 22px;
     margin-bottom: 2.5%;
     margin-bottom: 0.5em;
@@ -46,7 +45,6 @@
 
 @media (orientation: landscape), (min-width: 700px){
     .weather-day {
-        /* min-height: 50vh; */
         display: flex;
         flex-direction: column;
         justify-content: center;
