@@ -14,7 +14,7 @@ export const getLocation = createAsyncThunk(
         }
         return response.json();
     } catch (e) {
-      throw rejectWithValue(e.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -54,6 +54,7 @@ const locationSlice = createSlice({
         state.fetchStatus = 'loading';
       })
       .addCase(getLocation.rejected, (state, action) => {
+        console.log('action payload location rejected: ', action.payload)
         state.fetchStatus = 'Failed to fetch';
         state.error = 'please try again later'
       });
