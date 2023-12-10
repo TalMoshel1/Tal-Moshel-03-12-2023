@@ -1,21 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { dummyLocation } from "./objects/dummy-data";
 import { initializeLocation } from "./objects/intializers";
+import {getLocationUrl} from './functions/getLocationUrl'
 
 export const getLocation = createAsyncThunk(
   "fetch-location",
-  async (location, { rejectWithValue }) => {
+  async ({location, isGeoApi}, { rejectWithValue }) => {
     try {
-      const response = await fetch(
-        `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=4eG4ZizaYAjzSMwQfZX7va8Gc5HwVpwk
-        &q=${location}`
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      return response.json();
+        const url = getLocationUrl(location,isGeoApi)
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
     } catch (e) {
       throw rejectWithValue(e.message);
     }
@@ -36,7 +33,7 @@ const locationSlice = createSlice({
       .addCase(getLocation.fulfilled, (state, action) => {
         if (Array.isArray(action.payload)) {
           if (action.payload.length > 0 ) {
-            state.fetchStatus = "success";
+            state.fetchStatus = 'success';
             state.error = null; 
             state.data = action.payload[0];
 
@@ -44,16 +41,21 @@ const locationSlice = createSlice({
             state.fetchStatus = 'error'
             state.error = "can't find city, please try again"
           }
-        } else {
+        } if (action.payload.Key) {
+          state.fetchStatus = 'success';
+          state.error = null; 
+          state.data = action.payload
+
+        }else {
           state.error = action.payload.Message
         }
       }) 
       .addCase(getLocation.pending, (state) => {
-        state.fetchStatus = "loading";
+        state.fetchStatus = 'loading';
       })
       .addCase(getLocation.rejected, (state, action) => {
-        state.fetchStatus = "Failed to fetch";
-        state.error = "please try again later"
+        state.fetchStatus = 'Failed to fetch';
+        state.error = 'please try again later'
       });
   },
 });

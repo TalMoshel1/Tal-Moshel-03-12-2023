@@ -19,10 +19,10 @@ export const getForecast = createAsyncThunk(
 
 
 const forecastSlice = createSlice({
-  name: "forecast",
+  name: 'forecast',
   initialState: {
     data: {},
-    fetchStatus: "",
+    fetchStatus: '',
     error: null
   },
   reducers: {},
@@ -30,7 +30,7 @@ const forecastSlice = createSlice({
     builder
       .addCase(getForecast.fulfilled, (state, action) => {
         if (!action.payload) {
-          state.error = "cant find forecast data, please try again later!";
+          state.error = 'cant find forecast data, please try again later!';
           return
         } else {
           state.data = action.payload;

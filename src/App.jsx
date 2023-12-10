@@ -19,12 +19,20 @@ function App() {
   const location = useSelector((state) => state.location);
   const current = useSelector((state) => state.current);
   const theme = useSelector((state) => state.theme);
-  // const geoLocation = UseGeoLocation()
+  const geoLocation = UseGeoLocation()
 
   useEffect(() => {
-    console.log('???')
-    dispatch(getLocation("tel aviv"));
-  }, []);
+    if (geoLocation.error) {
+      console.log('ok!!!!')
+      
+      dispatch(getLocation({location: "tel aviv", isGeoApi: false}));
+    }
+    if (geoLocation.coordinates?.lat) {
+      dispatch(getLocation({location: geoLocation, isGeoApi: true}));
+      return
+    }
+    
+  }, [geoLocation]);
 
 
   useEffect(() => {

@@ -15,7 +15,7 @@ export function Search() {
     const value = event.target.value;
     if (!isNotEnglish(value)) {
       if (event.key === "Enter" || event.keyCode === 13) {
-         return dispatch(getLocation(value));
+         return dispatch(getLocation({location: value, isGeoApi: false}));
       }
     }
   };
@@ -30,11 +30,16 @@ export function Search() {
 
   useEffect(()=>{
       if (location.error) {
-        console.log(location.error)
         return setError(location.error)
       }
       if (location.fetchStatus === 'error') {
+        console.log(location.error)
         return setError("Please try later!!")
+      } 
+      if (location.fetchStatus ==='loading') {
+        return setError(location.fetchStatus)
+      } else {
+        return setError('')
       }
     
   },[location.error, location.fetchStatus])
